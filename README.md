@@ -1,4 +1,4 @@
-# Tietokantasovelluksen esittelysivu
+# Hiihtokisojen tulospalvelusovelluksen esittelysivu
 
 Yleisiä linkkejä:
 
