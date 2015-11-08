@@ -1,28 +1,27 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    HelloWorldController::kisalista_esittely();
   });
 
   $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
   });
 
-  $routes->get('/tapahtumalista', function() {
-  HelloWorldController::tapahtumalista();
-});
-$routes->get('/kilpailija', function() {
-  HelloWorldController::kilpailija_esittely();
-});
+  $routes->get('/1', function() {
+    HelloWorldController::kisalista_muokkaus();
+  });
 
-$routes->get('/kilpailija/1', function() {
-  HelloWorldController::kilpailija_muokkaus();
-});
+  $routes->get('/kilpailija', function() {
+    HelloWorldController::kilpailija_esittely();
+  });
 
-$routes->get('/tapahtumalista/1', function() {
-  HelloWorldController::kilpailulista();
-});
+  $routes->get('/kilpailija/1', function() {
+    HelloWorldController::kilpailija_muokkaus();
+  });
 
-$routes->get('/tapahtumalista/1/1', function() {
-  HelloWorldController::kilpailu();
-});
+  $routes->get('/kilpailu', function() {
+    HelloWorldController::kilpailu_esittely();
+  });
+
+ 

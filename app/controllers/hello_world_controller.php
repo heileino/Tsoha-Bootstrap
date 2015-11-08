@@ -12,8 +12,12 @@
       View::make('helloworld.html');
     }
 
-    public static function tapahtumalista(){
-      View::make('suunnitelmat/tapahtumalistasivu.html');
+    public static function kisalista_esittely(){
+      View::make('suunnitelmat/kisalistasivu.html');
+    }
+
+    public static function kisalista_muokkaus(){
+      View::make('suunnitelmat/kisalista_muokkaus.html');
     }
 
     public static function kilpailija_esittely(){
@@ -24,12 +28,10 @@
       View::make('suunnitelmat/kilpailija_muokkaus.html');
     }
 
-    public static function kilpailu(){
+    public static function kilpailu_esittely(){
       View::make('suunnitelmat/kisasivu.html');
     }
 
-    public static function kilpailulista(){
-      View::make('suunnitelmat/kisalistasivu.html');
-    }
+    
 
   }
