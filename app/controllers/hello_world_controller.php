@@ -39,5 +39,9 @@
     public static function kilpailija_valiaika1(){
       View::make('suunnitelmat/kilpailija_kisaraportti_valiaika1.html');
     }
+
+    public static function kilpailu_lahtolista(){
+      View::make('suunnitelmat/lahtolista.html');
+    }
     
   }

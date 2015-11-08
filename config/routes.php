@@ -36,3 +36,7 @@
   $routes->get('/kilpailija/valiaika1', function() {
     HelloWorldController::kilpailija_valiaika1();
   });
+
+  $routes->get('/kilpailu/lahtolista', function() {
+    HelloWorldController::kilpailu_lahtolista();
+  });

@@ -11,6 +11,7 @@ Yleisiä linkkejä:
 * [Linkki sovelluksen kilpailun lopputulosten esittelysivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
 * [Linkki sovelluksen kilpailun muokkaussivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/1)
 * [Linkki sovelluksen kilpailijan tietoihin ensimmäisen väliaikapisteen kohdalla](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailija/valiaika1)
+* [Linkki sovelluksen kilpailun lähtölistasivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/lahtolista)
 
 ## Työn aihe
 
