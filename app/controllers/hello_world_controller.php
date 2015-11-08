@@ -4,11 +4,32 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('home.html');
+   	  echo 'Tämä on etusivu!';
     }
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      echo 'Hello World!';
+      View::make('helloworld.html');
     }
+
+    public static function tapahtumalista(){
+      View::make('suunnitelmat/tapahtumalistasivu.html');
+    }
+
+    public static function kilpailija_esittely(){
+      View::make('suunnitelmat/kilpailija_esittely.html');
+    }
+
+    public static function kilpailija_muokkaus(){
+      View::make('suunnitelmat/kilpailija_muokkaus.html');
+    }
+
+    public static function kilpailu(){
+      View::make('suunnitelmat/kisasivu.html');
+    }
+
+    public static function kilpailulista(){
+      View::make('suunnitelmat/kisalistasivu.html');
+    }
+
   }
