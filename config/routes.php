@@ -29,6 +29,10 @@
     HelloWorldController::kilpailu_lopputulosesittely();
   });
 
-    $routes->get('/kilpailu/1', function() {
+  $routes->get('/kilpailu/1', function() {
     HelloWorldController::kilpailu_muokkaus();
+  });
+
+  $routes->get('/kilpailija/valiaika1', function() {
+    HelloWorldController::kilpailija_valiaika1();
   });

@@ -36,6 +36,8 @@
       View::make('suunnitelmat/kisa_muokkaus.html');
     }
 
+    public static function kilpailija_valiaika1(){
+      View::make('suunnitelmat/kilpailija_kisaraportti_väliaika1.html');
+    }
     
-
   }
