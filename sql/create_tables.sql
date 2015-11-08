@@ -37,7 +37,7 @@ CREATE TABLE Toimitsijarooli(
 CREATE TABLE Ajanmittauspiste(
 	id SERIAL,
 	etaisyys DECIMAL,
-	aika DECIMAL,
+	aika TIME,
 	kilpailu INTEGER REFERENCES Kilpailu(id),
 	kirjaaja INTEGER REFERENCES Kirjaaja(id),
 	PRIMARY KEY(id, kilpailu)
