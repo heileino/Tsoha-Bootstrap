@@ -32,6 +32,10 @@
       View::make('suunnitelmat/kisasivu.html');
     }
 
+    public static function kilpailu_muokkaus(){
+      View::make('suunnitelmat/kisa_muokkaus.html');
+    }
+
     
 
   }

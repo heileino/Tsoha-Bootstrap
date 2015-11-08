@@ -8,7 +8,11 @@
     HelloWorldController::sandbox();
   });
 
-  $routes->get('/1', function() {
+  $routes->get('/kilpailulista', function() {
+    HelloWorldController::kisalista_esittely();
+  });
+
+  $routes->get('/kilpailulista/1', function() {
     HelloWorldController::kisalista_muokkaus();
   });
 
@@ -20,8 +24,11 @@
     HelloWorldController::kilpailija_muokkaus();
   });
 
+
   $routes->get('/kilpailu', function() {
     HelloWorldController::kilpailu_esittely();
   });
 
- 
+    $routes->get('/kilpailu/1', function() {
+    HelloWorldController::kilpailu_muokkaus();
+  });

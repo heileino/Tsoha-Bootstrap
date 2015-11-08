@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 	<h1>Hiihtokilpailut</h1>
+	<p><label class="label label-primary">Lisää uusi</label></p>
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
 				<th>Kilpailun nimi</th>				
+				<th>Järjestäjä</th>
 				<th>Kilpailun päivämäärä</th>				
 				<th>Alkamisaika</th>
 				<th>Status</th>
@@ -15,9 +17,10 @@
 		</thead>
 
 		<tbody>
-			<!-- tapahtumien listaus -->
+			<!-- kisojen listaus -->
 			<tr>
 					<td><a href="#">Töölön hiihtokarnevaalit Naiset 10km perinteinen</a></td>			
+					<td>Töölön Sauva</td>
 					<td>11.10.2015</td>
 					<td>12.00</td>
 					<td><label class="label label-danger">päättynyt</td>					
@@ -27,6 +30,7 @@
 			</tr>
 			<tr>
 					<td><a href="#">Punavuoren hiihtorieha Miehet 30km vapaa</a></td>
+					<td>Punavuoren Pyrkimys</td>
 					<td>11.10.2015</td>
 					<td>15.00</td>
 					<td><label class="label label-danger">päättynyt</label></td>
