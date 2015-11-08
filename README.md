@@ -8,7 +8,7 @@ Yleisiä linkkejä:
 * [Linkki sovelluksen kilpailulistan muokkaussivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailulista/1)
 * [Linkki sovelluksen kilpailijan esittelysivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailija)
 * [Linkki sovelluksen kilpailijan muokkaussivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailija/1)
-* [Linkki sovelluksen kilpailun esittelysivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
+* [Linkki sovelluksen kilpailun lopputulosten esittelysivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
 * [Linkki sovelluksen kilpailun muokkaussivulle](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/1)
 
 ## Työn aihe
