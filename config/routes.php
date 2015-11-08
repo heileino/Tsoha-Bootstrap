@@ -26,7 +26,7 @@
 
 
   $routes->get('/kilpailu', function() {
-    HelloWorldController::kilpailu_esittely();
+    HelloWorldController::kilpailu_lopputulosesittely();
   });
 
     $routes->get('/kilpailu/1', function() {

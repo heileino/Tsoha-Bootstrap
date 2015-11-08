@@ -28,8 +28,8 @@
       View::make('suunnitelmat/kilpailija_muokkaus.html');
     }
 
-    public static function kilpailu_esittely(){
-      View::make('suunnitelmat/kisasivu.html');
+    public static function kilpailu_lopputulosesittely(){
+      View::make('suunnitelmat/kisasivu_lopputulokset.html');
     }
 
     public static function kilpailu_muokkaus(){
