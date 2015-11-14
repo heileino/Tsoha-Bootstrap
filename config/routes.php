@@ -38,6 +38,10 @@
     KilpailijaController::kilpailijaesittely($id);
   });
 
+  $routes->get('/kilpailija/:id/muokkaa', function($id) {
+    KilpailijaController::muokkaa($id);
+  });
+
   
   // kilpailu
 

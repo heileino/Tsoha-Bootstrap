@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 	<h1>{{kilpailija.nimi}}</h1>
+		<p>
+		<a href="{{base_path}}/kilpailija/{{kilpailija.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+		<a href="{{base_path}}" class="btn btn-danger">Poista</a>
+	</p>
 	
 	<ul>
 		<li><strong>Seura:</strong> {{kilpailija.seura}}</li>

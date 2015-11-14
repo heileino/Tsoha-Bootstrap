@@ -20,14 +20,19 @@ class KilpailijaController extends BaseController{
 			'syntymavuosi' => $parametrit['syntymavuosi']
 		));
 
-		Kint::dump($parametrit);
+		
 
 		$kilpailija->talleta();
 
-		//Redirect::to('/kilpailija/' . $kilpailija->id, array('message' => 'Kilpailija lisätty tietokantaan!'));
+		Redirect::to('/kilpailija/' . $kilpailija->id, array('message' => 'Kilpailija lisätty tietokantaan!'));
 	}
 
 	public static function luoUusi(){
 		View::make('kilpailija/uusi_kilpailija.html');
+	}
+
+	public static function muokkaa($id){
+		$kilpailija = Kilpailija::etsi($id);
+		View::make('kilpailija/kilpailija_muokkaus.html', array('kilpailija' => $kilpailija));
 	}
 }
