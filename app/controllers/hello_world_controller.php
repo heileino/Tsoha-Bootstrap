@@ -1,15 +1,27 @@
 <?php
 
   class HelloWorldController extends BaseController{
-
+    
+    
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
    	  echo 'Tämä on etusivu!';
     }
 
+    
     public static function sandbox(){
       // Testaa koodiasi täällä
-      View::make('helloworld.html');
+      //View::make('helloworld.html');
+      $kisa1 = Kilpailu::etsi(1);
+      $kisat = Kilpailu::kaikki();
+    // Kint-luokan dump-metodi tulostaa muuttujan arvon
+      Kint::dump($kisat);
+      Kint::dump($kisa1);
+
+      $kilpailija1 = Kilpailija::etsi(1);
+      $kilpailijat = Kilpailija::kaikki();
+      Kint::dump($kilpailijat);
+      Kint::dump($kilpailija1);
     }
 
     public static function kisalista_esittely(){
@@ -42,6 +54,10 @@
 
     public static function kilpailu_lahtolista(){
       View::make('suunnitelmat/lahtolista.html');
+    }
+
+    public static function kilpailijat_lista(){
+      View::make('suunnitelmat/kilpailijat_lista.html');
     }
     
   }

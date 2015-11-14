@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Lisää uusi kilpailija</h1>
+
+	<form method="post" action="{{base_path}}/kilpailija">
+		<div class="form-group">
+			<label>Nimi</label>
+			<input name="nimi" class="form-control" value="" type="text">
+		</div>
+		<div class="form-group">
+			<label>Seura</label>
+			<input name="seura" class="form-control" value="" type="text">
+		</div>
+		<div class="form-group">
+			<label>Kansalaisuus</label>
+			<input name="kansalaisuus"class="form-control" value="" type="text">
+		</div>
+		<div class="form-group">
+			<label>Syntymävuosi</label>
+			<input name="syntymavuosi" class="form-control" value="" type="text">
+		</div>
+		<div class="form-group">
+      <button type="submit" class="btn btn-primary">Lisää</button>
+    	</div>
+  	</form>
+{% endblock %}

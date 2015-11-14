@@ -16,21 +16,45 @@
     HelloWorldController::kisalista_muokkaus();
   });
 
+  // kilpailija
+
+  //$routes->get('/kilpailija', function() {
+  //  HelloWorldController::kilpailija_esittely();
+  //});
+
   $routes->get('/kilpailija', function() {
-    HelloWorldController::kilpailija_esittely();
+    KilpailijaController::kilpailijalista();
+  });  
+
+  $routes->post('/kilpailija', function(){
+    KilpailijaController::tallenna();
   });
 
-  $routes->get('/kilpailija/1', function() {
-    HelloWorldController::kilpailija_muokkaus();
+  $routes->get('/kilpailija/uusi', function(){
+    KilpailijaController:: luoUusi();
   });
 
+  $routes->get('/kilpailija/:id', function($id) {
+    KilpailijaController::kilpailijaesittely($id);
+  });
 
-  $routes->get('/kilpailu', function() {
-    HelloWorldController::kilpailu_lopputulosesittely();
+  
+  // kilpailu
+
+  //$routes->get('/kilpailu', function() {
+  //  HelloWorldController::kilpailu_lopputulosesittely();
+  //});
+
+  $routes->get('/kilpailu', function(){
+    KilpailuController::index();
   });
 
   $routes->get('/kilpailu/1', function() {
     HelloWorldController::kilpailu_muokkaus();
+  });
+
+    $routes->get('/kilpailijat/', function() {
+    HelloWorldController::kilpailijat_lista();
   });
 
   $routes->get('/kilpailija/valiaika1', function() {
