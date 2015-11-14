@@ -22,7 +22,6 @@ class KilpailijaController extends BaseController{
 
 		Kint::dump($parametrit);
 
-
 		$kilpailija->talleta();
 
 		//Redirect::to('/kilpailija/' . $kilpailija->id, array('message' => 'Kilpailija lisätty tietokantaan!'));
