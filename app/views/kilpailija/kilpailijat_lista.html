@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 	<h1>Kilpailijat </h1>
-
+	<div class="alert alert-success">
+  		{{message}}
+	</div>
 	<p>
     	<a href="{{base_path}}/kilpailija/uusi" class="btn btn-success">Lisää kilpailija</a>
   	</p>
@@ -23,7 +25,6 @@
 					<td>{{kilpailija.seura}}</td>			
 					<td>{{kilpailija.kansallisuus}}</td>
 					<td>{{kilpailija.syntymavuosi}}</td>
-					<td><a class="btn btn-default btn-sm" href="{{base_path}}/kilpailija/{{kilpailija.id}}/edit">Muokkaa</a></td>
 				</tr>
 			{% endfor %}
 		</tbody>

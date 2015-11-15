@@ -26,4 +26,16 @@
       return $errors;
     }
 
+    public function validate_string_lenght($string, $length){
+      $errors = array();
+      if($string == '' || $string == null){
+       $errors[] = 'Merkkijono ei saa olla tyhjä!';
+      }
+      if(strlen($string) < lenght){
+        $errors[] = 'Merkkijonon pituuden tulee olla vähintään ' + $length + ' merkkiä!';
+      }
+
+      return $errors;
+    }
+
   }

@@ -4,17 +4,17 @@
   //   HelloWorldController::kisalista_esittely();
   // });
 
-  // $routes->get('/hiekkalaatikko', function() {
-  //   HelloWorldController::sandbox();
-  // });
+  $routes->get('/hiekkalaatikko', function() {
+    HelloWorldController::sandbox();
+  });
 
-  // $routes->get('/kilpailulista', function() {
-  //   HelloWorldController::kisalista_esittely();
-  // });
+  $routes->get('/kilpailulista', function() {
+    HelloWorldController::kisalista_esittely();
+  });
 
-  // $routes->get('/kilpailulista/1', function() {
-  //   HelloWorldController::kisalista_muokkaus();
-  // });
+  $routes->get('/kilpailulista/1', function() {
+    HelloWorldController::kisalista_muokkaus();
+  });
 
   // kilpailija
 
@@ -27,11 +27,11 @@
   });  
 
   $routes->post('/kilpailija', function(){
-    KilpailijaController::tallenna();
+    KilpailijaController::store();
   });
 
   $routes->get('/kilpailija/uusi', function(){
-    KilpailijaController::luoUusi();
+    KilpailijaController::create();
   });
 
   $routes->get('/kilpailija/:id', function($id) {
@@ -40,6 +40,14 @@
 
   $routes->get('/kilpailija/:id/muokkaa', function($id) {
     KilpailijaController::muokkaa($id);
+  });
+
+  $routes->post('/kilpailija/:id/muokkaa', function($id) {
+    KilpailijaController::paivita($id);
+  });
+
+  $routes->post('/kilpailija/:id/poista', function($id){
+    KilpailijaController::poista($id);
   });
 
   
@@ -57,18 +65,18 @@
     KilpailuController::index();
   });
 
-  // $routes->get('/kilpailu/1', function() {
-  //   HelloWorldController::kilpailu_muokkaus();
-  // });
+  $routes->get('/kilpailu/1', function() {
+    HelloWorldController::kilpailu_muokkaus();
+  });
 
-  //   $routes->get('/kilpailijat/', function() {
-  //   HelloWorldController::kilpailijat_lista();
-  // });
+    $routes->get('/kilpailijat/', function() {
+    HelloWorldController::kilpailijat_lista();
+  });
 
-  // $routes->get('/kilpailija/valiaika1', function() {
-  //   HelloWorldController::kilpailija_valiaika1();
-  // });
+  $routes->get('/kilpailija/valiaika1', function() {
+    HelloWorldController::kilpailija_valiaika1();
+  });
 
-  // $routes->get('/kilpailu/lahtolista', function() {
-  //   HelloWorldController::kilpailu_lahtolista();
-  // });
+  $routes->get('/kilpailu/lahtolista', function() {
+    HelloWorldController::kilpailu_lahtolista();
+  });
