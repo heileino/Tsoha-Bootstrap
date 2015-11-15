@@ -39,23 +39,24 @@
   });
 
   $routes->get('/kilpailija/:id/muokkaa', function($id) {
-    KilpailijaController::muokkaa($id);
+    KilpailijaController::edit($id);
   });
 
   $routes->post('/kilpailija/:id/muokkaa', function($id) {
-    KilpailijaController::paivita($id);
+    KilpailijaController::update($id);
   });
 
   $routes->post('/kilpailija/:id/poista', function($id){
-    KilpailijaController::poista($id);
+    KilpailijaController::destroy($id);
   });
 
   
   // kilpailu
 
-  //$routes->get('/kilpailu', function() {
-  //  HelloWorldController::kilpailu_lopputulosesittely();
-  //});
+  $routes->get('/kilpailu/1/tulokset', function() {
+    HelloWorldController::kilpailu_lopputulosesittely();
+  });
+
   $routes->get('/', function(){
     KilpailuController::index();
   });

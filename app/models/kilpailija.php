@@ -77,14 +77,14 @@ class Kilpailija extends BaseModel{
 
 	
 
-	public function paivita(){
-		$kysely = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi RETURNING id');
-		//$kysely->execute(array('nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymävuosi));
-		$rivi = $kysely->fetch();
-		$this->id = $rivi['id'];
+	public function update(){
+		$query = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi RETURNING id');
+		$query->execute(array('nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymävuosi));
+		$row = $query->fetch();
+		$this->id = $row['id'];
 	}
 
-	public function poista(){
-		$kysely = DB::connection()->prepare('DELETE FROM Kilpailija WHERE id = :id');
+	public function destroy(){
+		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE id = :id');
 	}
 }

@@ -31,32 +31,32 @@ class KilpailijaController extends BaseController{
 		View::make('kilpailija/uusi_kilpailija.html');
 	}
 
-	public static function muokkaa($id){
-		$kilpailija = Kilpailija::etsi($id);
+	public static function edit($id){
+		$kilpailija = Kilpailija::find($id);
 		View::make('kilpailija/kilpailija_muokkaus.html', array('kilpailija' => $kilpailija));
 	}
 
-	public static function paivita($id){
-		$parametrit = $_POST;
+	public static function update($id){
+		$params = $_POST;
 
-		$attribuutit = array(
+		$attributes = array(
 			'id' => $id,
-			'nimi' => $parametrit['nimi'],
-			'seura' => $parametrit['seura'],
-			'kansallisuus' => $parametrit['kansallisuus'],
-			'syntymavuosi' => $parametrit['syntymavuosi']
+			'nimi' => $params['nimi'],
+			'seura' => $params['seura'],
+			'kansallisuus' => $params['kansallisuus'],
+			'syntymavuosi' => $params['syntymavuosi']
 		);
 		// HUOM! muista lisätä errorit myöhemmin
-		$kilpailija = new Kilpailija($attribuutit);
-		$kilpailija->paivita();
+		$kilpailija = new Kilpailija($attributes);
+		$kilpailija->update();
 
 		Redirect::to('/kilpailija/' . $kilpailija->id, array('message' => 'Kilpailijan tietoja on muokattu onnistuneesti!'));
 		
 	}
 
-	public static function poista($id){
+	public static function destroy($id){
 		$kilpailija = new Kilpailija(array('id' => $id));
-		$kilpailija->poista();
+		$kilpailija->destroy();
 
 		Redirect::to('/kilpailija', array('message' => 'Kilpailijan tiedot on poistettu onnistuneesti tietokannasta!'));
 	}

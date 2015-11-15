@@ -2,7 +2,7 @@
 {% block content %}
 	<h1>Muokkaa kilpailijan {{kilpailija.nimi}} tietoja</h1>
 
-	<form method="post" action="{{base_path}}/kilpailija">
+	<form method="post" action="{{base_path}}/kilpailija/{{kilpailija.id}}">
 		<div class="form-group">
 			<label>Nimi</label>
 			<input name="nimi" class="form-control" value="{{kilpailija.nimi}}" type="text">
@@ -21,7 +21,6 @@
 		</div>
 		<div class="form-group">
       		<button type="submit" class="btn btn-primary">Tallenna</button>
-      		<button type="submit" class="btn btn-info">Peruuta</button>
     	</div>
   	</form>
 {% endblock %}
