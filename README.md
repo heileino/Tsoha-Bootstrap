@@ -8,7 +8,8 @@ Yleisiä linkkejä:
 
 Kilpailuaiheiset sivut:
 
-* [Linkki esimerkkiin kilpailujen listaussivusta (etusivu)](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
+* [Linkki kilpailujen listaussivuun (etusivu)](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
+* [Linkki uuden kilpailun luomissivuun](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/uusi)
 * [Linkki esimerkkiin kilpailulistan muokkaussivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailulista/1)
 * [Linkki esimerkkiin kilpailun lopputulosten esittelysivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/1/tulokset)
 * [Linkki esimerkkiin kilpailun lähtölistasivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/lahtolista)
