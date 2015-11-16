@@ -13,7 +13,7 @@
       // Testaa koodiasi täällä
       //View::make('helloworld.html');
       $kisa1 = Kilpailu::find(1);
-      $kisat = Kilpailu::find();
+      $kisat = Kilpailu::all();
     // Kint-luokan dump-metodi tulostaa muuttujan arvon
       Kint::dump($kisat);
       Kint::dump($kisa1);

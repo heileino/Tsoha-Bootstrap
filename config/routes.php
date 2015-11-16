@@ -53,19 +53,35 @@
   
   // kilpailu
 
-  $routes->get('/kilpailu/1/tulokset', function() {
-    HelloWorldController::kilpailu_lopputulosesittely();
-  });
-
   $routes->get('/', function(){
     KilpailuController::index();
   });
-
 
   $routes->get('/kilpailu', function(){
     KilpailuController::index();
   });
 
+  $routes->post('/kilpailu', function(){
+    KilpailuController::store();
+  });
+
+  $routes->get('/kilpailu/uusi', function(){
+    KilpailuController::create();
+  });
+
+
+  $routes->get('/kilpailu/:id', function($id){
+    KilpailuController::show($id);
+  });
+
+  
+
+  // kilpailun suunnittelunäkymiä
+  $routes->get('/kilpailu/1/tulokset', function() {
+  HelloWorldController::kilpailu_lopputulosesittely();
+  });
+
+ 
   $routes->get('/kilpailu/1', function() {
     HelloWorldController::kilpailu_muokkaus();
   });

@@ -8,43 +8,51 @@ class Kilpailu extends BaseModel{
 		parent::__construct($attributes);
 	}
 
-	public static function kaikki(){
+	public static function all(){
 		
-		$kysely = DB::connection()->prepare('SELECT Kilpailu.id, Kilpailu.nimi, paivamaara, alkamisaika, Jarjestaja.nimi as jarjestaja FROM Kilpailu INNER JOIN Jarjestaja On Jarjestaja.id=Kilpailu.jarjestaja');
-		$kysely->execute();
-		$rivit = $kysely->fetchAll();
+		$query = DB::connection()->prepare('SELECT Kilpailu.id, Kilpailu.nimi, paivamaara, alkamisaika, Jarjestaja.nimi as jarjestaja FROM Kilpailu, Jarjestaja');
+		$query->execute();
+		$rows = $query->fetchAll();
 		$kilpailut = array();
 
-		foreach ($rivit as $rivi) {
+		foreach ($rows as $row) {
 			$kilpailut[] = new Kilpailu(array(
-				'id' => $rivi['id'],
-				'nimi' => $rivi['nimi'],
-				'paivamaara' => $rivi['paivamaara'],
-				'alkamisaika' => $rivi['alkamisaika'],
-				'jarjestaja' => $rivi['jarjestaja']
+				'id' => $row['id'],
+				'nimi' => $row['nimi'],
+				'paivamaara' => $row['paivamaara'],
+				'alkamisaika' => $row['alkamisaika'],
+				'jarjestaja' => $row['jarjestaja']
 			));
 		}
 
 		return $kilpailut;
 	}
 
-	public static function etsi($id){
-		$kysely = DB::connection()->prepare('SELECT Kilpailu.id, Kilpailu.nimi, paivamaara, alkamisaika, Jarjestaja.nimi as jarjestaja FROM Kilpailu INNER JOIN Jarjestaja On Jarjestaja.id=Kilpailu.jarjestaja WHERE Kilpailu.id = :id LIMIT 1');
-		$kysely->execute(array('id' => $id));
-		$rivi = $kysely->fetch();
+	
+	public static function find($id){
+		$query = DB::connection()->prepare('SELECT Kilpailu.id, Kilpailu.nimi, paivamaara, alkamisaika, Jarjestaja.nimi as jarjestaja FROM Kilpailu, Jarjestaja WHERE Kilpailu.id = :id LIMIT 1');
+		$query->execute(array('id' => $id));
+		$row = $query->fetch();
 
-		if($rivi){
+		if($row){
 			$kilpailu = new Kilpailu(array(
-				'id' => $rivi['id'],
-				'nimi' => $rivi['nimi'],
-				'paivamaara' => $rivi['paivamaara'],
-				'alkamisaika' => $rivi['alkamisaika'],
-				'jarjestaja' => $rivi['jarjestaja']
+				'id' => $row['id'],
+				'nimi' => $row['nimi'],
+				'paivamaara' => $row['paivamaara'],
+				'alkamisaika' => $row['alkamisaika'],
+				'jarjestaja' => $row['jarjestaja']
 			));
 
 			return $kilpailu;
 		}
 
 		return null;
+	}
+
+	public function save(){
+		$query = DB::connection()->prepare('INSERT INTO Kilpailu (nimi, paivamaara, alkamisaika, jarjestaja) VALUES (:nimi, :paivamaara, :alkamisaika, :jarjestaja) RETURNING id');
+		$query->execute(array('nimi' => $this->nimi, 'paivamaara' => $this->paivamaara, 'alkamisaika' => $this->alkamisaika, 'jarjestaja' => $this->jarjestaja));
+		$row = $query->fetch();
+		$this->id = $row['id'];
 	}
 }

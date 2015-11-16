@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{kilpailu.nimi}}</h1>
+		<p>
+		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/poista" class="btn btn-danger">Poista</a>
+	</p>
+	
+	<ul>
+		<li><strong>Nimi:</strong> {{kilpailu.nimi}}</li>
+		<li><strong>Päivämäärä:</strong> {{kilpailu.paivamaara}}</li>
+		<li><strong>Alkamisaika:</strong> {{kilpailu.alkamisaika}}</li>
+		<li><strong>Järjestäjä:</strong> {{kilpailu.jarjestaja}}</li>
+	</ul>
+{% endblock %}
