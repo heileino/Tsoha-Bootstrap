@@ -25,10 +25,9 @@ class KilpailuController extends BaseController{
 			'alkamisaika' => $params['alkamisaika'],
 		));
 
-		Kint::dump($params);
 
 		$kilpailu->save();
 
-		//Redirect::to('/kilpailu/' . $kilpailu->id, array('message' => 'Kilpailu on lisätty tietokantaan!'));
+		Redirect::to('/kilpailu', array('message' => 'Kilpailu on lisätty tietokantaan!'));
 	}
 }

@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 	<h1>Hiihtokilpailut</h1>
+	<div class="alert alert-success">
+  		{{message}}
+	</div>
 	<p>
     	<a href="{{base_path}}/kilpailu/uusi" class="btn btn-success">Lisää uusi kilpailu</a>
   	</p>
