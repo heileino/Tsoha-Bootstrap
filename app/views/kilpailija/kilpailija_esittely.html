@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}	
 	{% if message %}
 		<div class="alert alert-success">
 			<ul>				
@@ -7,12 +8,11 @@
 			</ul>
 		</div>
 	{% endif %}
+	
 	<h1>{{attributes.nimi}}</h1>
-		<p>
-		<a href="{{base_path}}/kilpailija/{{attributes.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
-		<form method="post" action="{{base_path}}/kilpailija/{{attributes.id}}/poista" style="display: inline-block;">
-  			<button type="submit" class="btn btn-danger">Poista</button>
-		</form>
+	<p>
+		{{forms.edit_button("#{base_path}/kilpailija/#{attributes.id}/muokkaa")}}
+		{{forms.destroy_button("#{base_path}/kilpailija/#{attributes.id}/poista")}}
 	</p>
 	
 	<ul>
