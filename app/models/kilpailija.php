@@ -6,6 +6,7 @@ class Kilpailija extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_nimi', 'validate_seura', 'validate_kansallisuus', 'validate_syntymavuosi');
 	}
 
 	public static function all(){
@@ -55,28 +56,22 @@ class Kilpailija extends BaseModel{
 	}
 
 	public function validate_nimi(){
-		return parent::validate_string_lenght($this->nimi, 3);
+		return parent::validate_string_length($this->nimi, 3);
 	}
 
 	public function validate_seura(){
-		return parent::validate_string_lenght($this->seura, 2);
+		return parent::validate_string_length($this->seura, 2);
 	}
 
 	public function validate_kansallisuus(){
-		return parent::validate_string_lenght($this->nimi, 2);
+		return parent::validate_country_abbreviation($this->kansallisuus, 2);
 	}
 
 	public function validate_syntymavuosi(){
-		$errors = array();
-		if($this->syntymavuosi < 1900 || $this->syntymavuosi > date('Y')){
-			$errors[] = 'Syntymävuosi ei kelvannut!';
-		}
-
-		return $errors;
+		return parent::validate_year($this->syntymavuosi);
 	}
 
 	
-
 	public function update(){
 		$query = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi RETURNING id');
 		$query->execute(array('nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymävuosi));

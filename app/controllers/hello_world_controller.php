@@ -12,16 +12,26 @@
     public static function sandbox(){
       // Testaa koodiasi täällä
       //View::make('helloworld.html');
-      $kisa1 = Kilpailu::find(1);
-      $kisat = Kilpailu::all();
+      //$kisa1 = Kilpailu::find(1);
+      //$kisat = Kilpailu::all();
     // Kint-luokan dump-metodi tulostaa muuttujan arvon
-      Kint::dump($kisat);
-      Kint::dump($kisa1);
+      //Kint::dump($kisat);
+      //Kint::dump($kisa1);
 
-      $kilpailija1 = Kilpailija::find(1);
-      $kilpailijat = Kilpailija::all();
-      Kint::dump($kilpailijat);
-      Kint::dump($kilpailija1);
+      //$kilpailija1 = Kilpailija::find(1);
+      //$kilpailijat = Kilpailija::all();
+      //Kint::dump($kilpailijat);
+      //Kint::dump($kilpailija1);
+
+      $kilpailija1 = new Kilpailija(array(
+        'nimi' => 'Mi',
+        'seura' => 'M',
+        'kansallisuus' => 'F',
+        'syntymavuosi' => 'vvvv'
+        ));
+      $errors = $kilpailija1->errors();
+
+      Kint::dump($errors);
     }
 
     public static function kisalista_esittely(){

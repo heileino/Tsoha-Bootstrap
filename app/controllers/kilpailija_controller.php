@@ -15,20 +15,27 @@ class KilpailijaController extends BaseController{
 
 	public static function store(){
 		$params = $_POST;
-		$kilpailija = new Kilpailija(array(
+		$attributes = array(
 			'nimi' => $params['nimi'],
 			'seura' => $params['seura'],
 			'kansallisuus' => $params['kansallisuus'],
 			'syntymavuosi' => $params['syntymavuosi']
-		));
+		);
 
-		$kilpailija->save();
+		$kilpailija = new Kilpailija($attributes);
+		$errors = $kilpailija->errors();
 
-		Redirect::to('/kilpailija', array('message' => 'Kilpailijan tiedot on lisätty tietokantaan!'));
+		if(count($errors) == 0){
+			$kilpailija->save();
+			Redirect::to('/kilpailija', array('message' => 'Kilpailijan tiedot on lisätty tietokantaan!'));
+		} else{
+			View::make('kilpailija/kilpailija_uusi.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
+		
 	}
 
 	public static function create(){
-		View::make('kilpailija/uusi_kilpailija.html');
+		View::make('kilpailija/kilpailija_uusi.html');
 	}
 
 	public static function edit($id){
