@@ -70,6 +70,6 @@ class KilpailijaController extends BaseController{
 		$kilpailija = new Kilpailija(array('id' => $id));
 		$kilpailija->destroy();
 
-		Redirect::to('/kilpailija', array('message' => 'Kilpailijan tiedot on poistettu onnistuneesti tietokannasta!'));
+		Redirect::to('/kilpailija', array('message' => 'Kilpailijan poisto onnistui!'));
 	}
 }

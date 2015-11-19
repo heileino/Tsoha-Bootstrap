@@ -82,5 +82,7 @@ class Kilpailija extends BaseModel{
 
 	public function destroy(){
 		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE id = :id');
+		$query->execute(array('id' => $this->id));
+		$query->fetch();
 	}
 }
