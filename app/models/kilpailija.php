@@ -73,10 +73,11 @@ class Kilpailija extends BaseModel{
 
 	
 	public function update(){
-		$query = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi RETURNING id');
-		$query->execute(array('nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymävuosi));
+		$query = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi WHERE id = :id');
+		$query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymavuosi));
 		$row = $query->fetch();
-		$this->id = $row['id'];
+
+		
 	}
 
 	public function destroy(){

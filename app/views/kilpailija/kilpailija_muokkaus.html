@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>Muokkaa kilpailijan {{kilpailija.nimi}} tietoja</h1>
+	<h1>Muokkaa kilpailijan {{attributes.nimi}} tietoja</h1>
 
-	<form method="post" action="{{base_path}}/kilpailija/{{kilpailija.id}}">
+	<form method="post" action="{{base_path}}/kilpailija/{{attributes.id}}/muokkaa">
 		<div class="form-group">
 			<label>Nimi</label>
-			<input name="nimi" class="form-control" value="{{kilpailija.nimi}}" type="text">
+			<input name="nimi" class="form-control" value="{{attributes.nimi}}" type="text">
 		</div>
 		<div class="form-group">
 			<label>Seura</label>
-			<input name="seura" class="form-control" value="{{kilpailija.seura}}" type="text">
+			<input name="seura" class="form-control" value="{{attributes.seura}}" type="text">
 		</div>
 		<div class="form-group">
 			<label>Kansallisuus</label>
-			<input name="kansallisuus" class="form-control" value="{{kilpailija.kansallisuus}}" type="text">
+			<input name="kansallisuus" class="form-control" value="{{attributes.kansallisuus}}" type="text">
 		</div>
 		<div class="form-group">
 			<label>Syntymävuosi</label>
-			<input name="syntymavuosi" class="form-control" value="{{kilpailija.syntymavuosi}}" type="text">
+			<input name="syntymavuosi" class="form-control" value="{{attributes.syntymavuosi}}" type="text">
 		</div>
 		<div class="form-group">
       		<button type="submit" class="btn btn-primary">Tallenna</button>

@@ -10,7 +10,7 @@ class KilpailijaController extends BaseController{
 
 	public static function kilpailijaesittely($id){
 		$kilpailija = Kilpailija::find($id);
-		View::make('kilpailija/kilpailija_esittely.html', array('kilpailija' => $kilpailija));
+		View::make('kilpailija/kilpailija_esittely.html', array('attributes' => $kilpailija));
 	}
 
 	public static function store(){
@@ -40,12 +40,11 @@ class KilpailijaController extends BaseController{
 
 	public static function edit($id){
 		$kilpailija = Kilpailija::find($id);
-		View::make('kilpailija/kilpailija_muokkaus.html', array('kilpailija' => $kilpailija));
+		View::make('kilpailija/kilpailija_muokkaus.html', array('attributes' => $kilpailija));
 	}
 
 	public static function update($id){
 		$params = $_POST;
-
 		$attributes = array(
 			'id' => $id,
 			'nimi' => $params['nimi'],
@@ -53,11 +52,17 @@ class KilpailijaController extends BaseController{
 			'kansallisuus' => $params['kansallisuus'],
 			'syntymavuosi' => $params['syntymavuosi']
 		);
-		// HUOM! muista lisätä errorit myöhemmin
+		
 		$kilpailija = new Kilpailija($attributes);
-		$kilpailija->update();
+		$errors = $kilpailija->errors();
+		
 
-		Redirect::to('/kilpailija/' . $kilpailija->id, array('message' => 'Kilpailijan tietoja on muokattu onnistuneesti!'));
+		if(count($errors) > 0){
+			View::make('kilpailija/kilpailija_muokkaus.html', array('errors' => $errors, 'attributes' => $attributes));
+		} else{
+			$kilpailija->update();
+			Redirect::to('/kilpailija/' . $kilpailija->id, array('message' => 'Kilpailijan tietoja on muokattu onnistuneesti!')); 
+		}
 		
 	}
 
