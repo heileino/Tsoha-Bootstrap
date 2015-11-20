@@ -4,6 +4,13 @@
 
     public static function get_user_logged_in(){
       // Toteuta kirjautuneen käyttäjän haku tähän
+      if(isset($_SESSION['jarjestaja'])){
+        $jarjestaja_id = $_SESSION['jarjestaja'];
+        $jarjestaja = Jarjestaja::find($jarjestaja_id);
+
+        return $jarjestaja;
+      }
+
       return null;
     }
 

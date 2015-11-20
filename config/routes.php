@@ -74,6 +74,15 @@
     KilpailuController::show($id);
   });
 
+  // jarjestaja
+
+  $routes->get('/login', function(){
+    JarjestajaController::login();
+  });
+
+  $routes->post('/login', function(){
+    JarjestajaController::handle_login();
+  });
   
 
   // kilpailun suunnittelunäkymiä
