@@ -9,7 +9,7 @@ Yleisiä linkkejä:
 Kilpailuaiheiset sivut:
 
 * [Linkki kilpailujen listaussivuun (etusivu)](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
-* [Linkki kilpailun muokkaussivuun](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
+* [Linkki uuden kilpailun luomissivuun](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/uusi)
 * [Linkki esimerkkiin kilpailulistan muokkaussivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailulista/1)
 * [Linkki esimerkkiin kilpailun lopputulosten esittelysivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/1/tulokset)
 * [Linkki esimerkkiin kilpailun lähtölistasivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/lahtolista)
@@ -23,4 +23,7 @@ Kilpailja-aiheiset sivut:
 
 ## Työn aihe
 
-[linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html) 
+[linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html)
+
+### Testaaminen
+Testaaja voi kirjautua järjestelmään kilpailunjärjestäjänä tunnuksella "suksi" ja salasanalla "sauva". 

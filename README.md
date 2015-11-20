@@ -23,4 +23,7 @@ Kilpailja-aiheiset sivut:
 
 ## Työn aihe
 
-[linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html) 
+[linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Hiihtokisojen_tulospalvelu.html)
+
+### Testikirjautuminen
+Testaaja voi kirjautua järjestelmään kilpailunjärjestäjänä tunnuksella "suksi" ja salasanalla "sauva". 
