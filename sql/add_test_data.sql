@@ -8,6 +8,7 @@ INSERT INTO Kilpailu (nimi, paivamaara, alkamisaika, jarjestaja) VALUES ('Kampin
 INSERT INTO Kilpailu (nimi, paivamaara, alkamisaika, jarjestaja) VALUES ('Töölön hiihtokarnevaalit miehet 15km perinteinen', '2015-12-27', '13:00', (SELECT id FROM Jarjestaja WHERE nimi like 'Töölö%'));
 -- Kilpailija-taulun testidata
 INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Hirmu Hiihtäjä', 'Kampin Hiihtoseura', 'FIN', 1949);
+INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Juhani Jalkatyö', 'Vuosaaren Viesti', 'EST', 1949);
 -- Kirjaaja-taulun testidata
 INSERT INTO Kirjaaja (nimi, tunnus, salasana) VALUES ('Kimmo Kirjuri', 'kimmo', 'kimmo123');
 -- Toimitsijarooli-taulun testidata
