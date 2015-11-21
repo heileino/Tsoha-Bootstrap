@@ -74,6 +74,10 @@
     KilpailuController::show($id);
   });
 
+  $routes->get('/kilpailu/omalista', function($id)){
+    KilpailuController::ownlist();
+  });
+
   // kayttaja
 
   $routes->get('/login', function(){
