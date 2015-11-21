@@ -9,8 +9,7 @@ class Kilpailu extends BaseModel{
 	}
 
 	public static function all(){
-		
-		$query = DB::connection()->prepare('SELECT Kilpailu.id, Kilpailu.nimi, paivamaara, alkamisaika, Jarjestaja.nimi as jarjestaja FROM Kilpailu, jarjestaja WHERE Kilpailu.jarjestaja=Jarjestaja.id');
+		$query = DB::connection()->prepare('SELECT * FROM Kilpailu');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$kilpailut = array();
@@ -30,7 +29,7 @@ class Kilpailu extends BaseModel{
 
 	
 	public static function find($id){
-		$query = DB::connection()->prepare('SELECT Kilpailu.id, Kilpailu.nimi, paivamaara, alkamisaika, Jarjestaja.nimi as jarjestaja FROM Kilpailu, Jarjestaja WHERE Kilpailu.jarjestaja=Jarjestaja.id AND Kilpailu.id = :id LIMIT 1');
+		$query = DB::connection()->prepare('SELECT * FROM Kilpailu WHERE Kilpailu.id = :id LIMIT 1');
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 

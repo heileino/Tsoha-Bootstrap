@@ -1,7 +1,7 @@
-CREATE TABLE Jarjestaja(
+CREATE TABLE Kayttaja(
 	id SERIAL PRIMARY KEY,
 	nimi varchar(120) NOT NULL,
-	tunnus varchar(60),
+	tunnus varchar(60) NOT NULL,
 	salasana varchar(60)
 );
 
@@ -10,7 +10,7 @@ CREATE TABLE Kilpailu(
 	nimi varchar(100) NOT NULL,
 	paivamaara DATE,
 	alkamisaika TIME,
-	jarjestaja INTEGER REFERENCES Jarjestaja(id)
+	jarjestaja varchar(120)
 );
 
 CREATE TABLE Kilpailija(

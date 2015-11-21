@@ -4,6 +4,7 @@ class KilpailijaController extends BaseController{
 	
 
 	public static function kilpailijalista(){
+		self::check_logged_in();
 		$kilpailijat = Kilpailija::all();
 		View::make('kilpailija/kilpailijat_lista.html', array('kilpailijat' => $kilpailijat));
 	}

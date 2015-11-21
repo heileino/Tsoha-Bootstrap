@@ -74,14 +74,18 @@
     KilpailuController::show($id);
   });
 
-  // jarjestaja
+  // kayttaja
 
   $routes->get('/login', function(){
-    JarjestajaController::login();
+    KayttajaController::login();
   });
 
   $routes->post('/login', function(){
-    JarjestajaController::handle_login();
+    KayttajaController::handle_login();
+  });
+
+  $routes->get('/logout', function(){
+    KayttajaController::logout();
   });
   
 
