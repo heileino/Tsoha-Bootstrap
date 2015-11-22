@@ -26,6 +26,7 @@ class KilpailuController extends BaseController{
 	}
 
 	public static function edit($id){
+		self::check_logged_in();
 		$kilpailu = Kilpailu::find($id);
 		View::make('kilpailu/kilpailu_muokkaus.html', array('kilpailu' => $kilpailu));
 	}

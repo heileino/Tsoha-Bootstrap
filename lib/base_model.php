@@ -70,7 +70,7 @@
 
     public function validate_time_format($input){
       $errors = array();
-      if(!preg_match('#^([01]?[0-9]|2[0-3]):[0-5][0-9]?$#', $input)){
+      if(!preg_match('#^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$#', $input)){
         $errors[] = 'Aikamuoto ei ollut sopiva. Syötä aika muodossa "hh:mm"';
       }
 

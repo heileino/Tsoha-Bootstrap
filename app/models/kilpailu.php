@@ -6,7 +6,7 @@ class Kilpailu extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_nimi', 'validate_paivamaara', 'validate_alkamisaika');
+		$this->validators = array('validate_nimi', 'validate_jarjestaja', 'validate_paivamaara', 'validate_alkamisaika');
 	}
 
 	public static function all(){
@@ -100,6 +100,10 @@ class Kilpailu extends BaseModel{
 
 	public function validate_nimi(){
 		return self::validate_string_length('Nimen', $this->nimi, 3);
+	}
+
+	public function validate_jarjestaja(){
+		return self::validate_string_length('Järjestäjän nimen', $this->jarjestaja, 2);
 	}
 
 	public function validate_paivamaara(){
