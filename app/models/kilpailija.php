@@ -55,22 +55,6 @@ class Kilpailija extends BaseModel{
 		$this->id = $row['id'];
 	}
 
-	public function validate_nimi(){
-		return parent::validate_string_length($this->nimi, 3);
-	}
-
-	public function validate_seura(){
-		return parent::validate_string_length($this->seura, 2);
-	}
-
-	public function validate_kansallisuus(){
-		return parent::validate_country_abbreviation($this->kansallisuus, 2);
-	}
-
-	public function validate_syntymavuosi(){
-		return parent::validate_year($this->syntymavuosi);
-	}
-
 	
 	public function update(){
 		$query = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi WHERE id = :id');
@@ -84,5 +68,21 @@ class Kilpailija extends BaseModel{
 		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE id = :id');
 		$query->execute(array('id' => $this->id));
 		$query->fetch();
+	}
+
+	public function validate_nimi(){
+		return self::validate_string_length('Nimen', $this->nimi, 3);
+	}
+
+	public function validate_seura(){
+		return self::validate_string_length('Seuran nimen', $this->seura, 2);
+	}
+
+	public function validate_kansallisuus(){
+		return self::validate_country_abbreviation($this->kansallisuus, 2);
+	}
+
+	public function validate_syntymavuosi(){
+		return self::validate_year($this->syntymavuosi);
 	}
 }

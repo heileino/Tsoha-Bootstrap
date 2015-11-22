@@ -6,6 +6,7 @@ class Kilpailu extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_nimi', 'validate_paivamaara', 'validate_alkamisaika');
 	}
 
 	public static function all(){
@@ -95,5 +96,17 @@ class Kilpailu extends BaseModel{
 		$query = DB::connection()->prepare('DELETE FROM Kilpailu WHERE id = :id');
 		$query->execute(array('id' => $this->id));
 		$query->fetch();
+	}
+
+	public function validate_nimi(){
+		return self::validate_string_length('Nimen', $this->nimi, 3);
+	}
+
+	public function validate_paivamaara(){
+		return self::validate_date_format($this->paivamaara);
+	}
+
+	public function validate_alkamisaika(){
+		return self::validate_time_format($this->alkamisaika);
 	}
 }

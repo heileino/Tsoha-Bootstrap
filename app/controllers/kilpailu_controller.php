@@ -31,10 +31,12 @@ class KilpailuController extends BaseController{
 	}
 
 	public static function update($id){
+		self::check_logged_in();
 		$params = $_POST;
+		$user = self::get_user_logged_in();
 		$attributes = array(
 			'id' => $id,
-			'kayttaja_id' => self::get_user_logged_in()->id,
+			'kayttaja_id' => $user->id,
 			'nimi' => $params['nimi'],
 			'jarjestaja' => $params['jarjestaja'],
 			'paivamaara' => $params['paivamaara'],
@@ -42,18 +44,16 @@ class KilpailuController extends BaseController{
 		);
 		
 		$kilpailu = new Kilpailu($attributes);
-		//$errors = null //$kilpailu->errors();
+		$errors = $kilpailu->errors();
 		
 
-		//if(count($errors) > 0){
-			//View::make('kilpailu/kilpailu_muokkaus.html', array('errors' => $errors, 'attributes' => $attributes));
-		//} else{
+		if(count($errors) > 0){
+			View::make('kilpailu/kilpailu_muokkaus.html', array('errors' => $errors, 'kilpailu' => $kilpailu));
+		} else{
 			$kilpailu->update();
 			Redirect::to('/omakilpailulista', array('message' => 'Kilpailutietojen muokkaus kohteessa ' . $kilpailu->nimi .' onnistui!')); 
-		//}
+		}
 	}
-
-	
 
 	public static function store(){
 		self::check_logged_in();

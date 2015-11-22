@@ -27,12 +27,12 @@
       return $errors;
     }
 
-    public function validate_string_length($string, $length){
+    public function validate_string_length($message, $string, $length){
       $errors = array();
       if($string == '' || $string == null){
        $errors[] = 'Merkkijono ei saa olla tyhjä!';
       } else if(strlen($string) < $length){
-        $errors[] = 'Liian lyhyt merkkijono!';
+        $errors[] = $message . ' pituuden tulee olla vähintään ' . $length . ' merkkiä!';
       }
 
       return $errors;
@@ -52,6 +52,26 @@
       $errors = array();
       if(!preg_match('/^[A-Z][A-Z]{1,2}/', $string)){
         $errors[]  = 'Virheellinen maatunnus!';
+      }
+
+      return $errors;
+    }
+
+    public function validate_date_format($input){
+      $errors = array();
+      $validator = new Valitron\Validator(array('input' => $input));
+      $validator->rule('date', 'input');
+      if(!$validator->validate()){
+        $errors[] = 'Päivämäärä ei ollut sopiva!';
+      }
+
+      return $errors;
+    }
+
+    public function validate_time_format($input){
+      $errors = array();
+      if(!preg_match('#^([01]?[0-9]|2[0-3]):[0-5][0-9]?$#', $input)){
+        $errors[] = 'Aikamuoto ei ollut sopiva. Syötä aika muodossa "hh:mm"';
       }
 
       return $errors;
