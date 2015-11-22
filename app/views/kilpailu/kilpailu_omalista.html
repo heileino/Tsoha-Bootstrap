@@ -6,6 +6,9 @@
   		{{message}}
 	</div>
 	{% endif %}
+	<p>
+    	<a href="{{base_path}}/kilpailu/uusi" class="btn btn-success">Lisää uusi kilpailu</a>
+  	</p>
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -27,8 +30,8 @@
 					<td>{{kilpailu.alkamisaika}}</td>
 					<!-- <td><label class="label label-danger">päättynyt</td>	-->				
 					<!-- <td>1.10.2015</td> -->
+					<th><a class="btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{kilpailu.id}}/muokkaa">Muokkaa</a></th>
 				</tr>
-				
 			{% endfor %}
 		</tbody>
 	</table>

@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% import "macros/forms.html" as forms %}
 	<h1>{{kilpailu.nimi}}</h1>
-		<p>
-		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
-		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/poista" class="btn btn-danger">Poista</a>
+	<p>
+		{{forms.edit_button("#{base_path}/kilpailu/#{kilpailu.id}/muokkaa")}}
+		{{forms.destroy_button("#{base_path}/kilpailu/#{kilpailu.id}/poista")}}
 	</p>
 	
 	<ul>

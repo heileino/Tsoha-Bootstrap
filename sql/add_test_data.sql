@@ -1,9 +1,10 @@
 
 -- Jarjestaja-taulun testidata
 INSERT INTO Kayttaja (nimi, tunnus, salasana) VALUES ('Teppo Testaaja', 'suksi', 'sauva');
+INSERT INTO Kayttaja (nimi, tunnus, salasana) VALUES ('Kalle Kokeilija', 'kalle', 'kokeilija');
 -- Kilpailu-taulun testidata
-INSERT INTO Kilpailu (nimi, paivamaara, alkamisaika, jarjestaja) VALUES ('Kampin kisat miehet 30km vapaa', '2015-12-26', '12:00', 'Kampin Kisaveikot');
-INSERT INTO Kilpailu (nimi, paivamaara, alkamisaika, jarjestaja) VALUES ('Töölön hiihtokarnevaalit miehet 15km perinteinen', '2015-12-27', '13:00', 'Töölön Taisto');
+INSERT INTO Kilpailu (kayttaja_id, nimi, paivamaara, alkamisaika, jarjestaja) VALUES (1,'Kampin kisat miehet 30km vapaa', '2015-12-26', '12:00', 'Kampin Kisaveikot');
+INSERT INTO Kilpailu (kayttaja_id, nimi, paivamaara, alkamisaika, jarjestaja) VALUES (1, 'Töölön hiihtokarnevaalit miehet 15km perinteinen', '2015-12-27', '13:00', 'Töölön Taisto');
 -- Kilpailija-taulun testidata
 INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Hirmu Hiihtäjä', 'Kampin Hiihtoseura', 'FIN', 1949);
 INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Juhani Jalkatyö', 'Vuosaaren Viesti', 'EST', 1949);

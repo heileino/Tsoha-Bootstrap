@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Muokkaa kilpailun {{kilpailu.nimi}} tietoja</h1>
+
+	<form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/muokkaa">
+		<div class="form-group">
+			<label>Kilpailun nimi</label>
+			<input name="nimi" class="form-control" value="{{kilpailu.nimi}}" type="text">
+		</div>
+		<div class="form-group">
+			<label>Järjestäjä</label>
+			<input name="jarjestaja" class="form-control" value="{{kilpailu.jarjestaja}}" type="text">
+		</div>
+		<div class="form-group">
+			<label>Kilpailun päivämäärä (pp.kk.vvvv)</label>
+			<input name="paivamaara" class="form-control" value="{{kilpailu.paivamaara}}" type="text">
+		</div>
+		<div class="form-group">
+			<label>Kilpailun alkamisaika (muodossa "09:00")</label>
+			<input name="alkamisaika" class="form-control" value="{{kilpailu.alkamisaika}}" type="text">
+		</div>		
+      		<button type="submit" class="btn btn-primary">Tallenna</button>
+    	</div>
+  	</form>
+{% endblock %}

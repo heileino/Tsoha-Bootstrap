@@ -14,12 +14,12 @@ class KayttajaController extends BaseController{
 		} else{
 			$_SESSION['kayttaja'] = $kayttaja->id;
 
-			Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $kayttaja->nimi . '!'));
+			Redirect::to('/omakilpailulista', array('message' => 'Tervetuloa takaisin ' . $kayttaja->nimi . '!'));
 		}
 	}
 
 	public static function logout(){
 		$_SESSION['kayttaja'] = null;
-		Redirect::to('/', array('message' => 'Olet kirjautunut ulos!'));
+		Redirect::to('/', array('message' => 'Uloskirjautuminen onnistui!'));
 	}
 }

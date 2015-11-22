@@ -7,6 +7,7 @@ CREATE TABLE Kayttaja(
 
 CREATE TABLE Kilpailu(
 	id SERIAL PRIMARY KEY,
+	kayttaja_id INTEGER REFERENCES Kayttaja(id) ON DELETE CASCADE,
 	nimi varchar(100) NOT NULL,
 	paivamaara DATE,
 	alkamisaika TIME,
@@ -29,8 +30,8 @@ CREATE TABLE Kirjaaja(
 );
 
 CREATE TABLE Toimitsijarooli(
-	kilpailu INTEGER REFERENCES Kilpailu(id),
-	kirjaaja INTEGER REFERENCES Kirjaaja(id),
+	kilpailu INTEGER REFERENCES Kilpailu(id) ON DELETE CASCADE,
+	kirjaaja INTEGER REFERENCES Kirjaaja(id) ON DELETE CASCADE,
 	PRIMARY KEY(kilpailu, kirjaaja)
 );
 
@@ -38,21 +39,21 @@ CREATE TABLE Ajanmittauspiste(
 	id SERIAL,
 	etaisyys DECIMAL,
 	aika TIME,
-	kilpailu INTEGER REFERENCES Kilpailu(id),
-	kirjaaja INTEGER REFERENCES Kirjaaja(id),
+	kilpailu INTEGER REFERENCES Kilpailu(id) ON DELETE CASCADE,
+	kirjaaja INTEGER REFERENCES Kirjaaja(id) ON DELETE CASCADE,
 	PRIMARY KEY(id, kilpailu)
 );
 
 CREATE TABLE Tulos(
-	kilpailija INTEGER REFERENCES Kilpailija(id),
+	kilpailija INTEGER REFERENCES Kilpailija(id) ON DELETE CASCADE,
 	kilpailu INTEGER,
 	ajanmittauspiste INTEGER,
 	PRIMARY KEY(kilpailija, kilpailu, ajanmittauspiste),
-	FOREIGN KEY(ajanmittauspiste, kilpailu) REFERENCES Ajanmittauspiste(id, kilpailu)
+	FOREIGN KEY(ajanmittauspiste, kilpailu) REFERENCES Ajanmittauspiste(id, kilpailu) ON DELETE CASCADE
 );
 
 CREATE TABLE Osallistuja(
-	kilpailu INTEGER REFERENCES Kilpailu(id),
-	kilpailija INTEGER REFERENCES Kilpailija(id),
+	kilpailu INTEGER REFERENCES Kilpailu(id) ON DELETE CASCADE,
+	kilpailija INTEGER REFERENCES Kilpailija(id) ON DELETE CASCADE,
 	PRIMARY KEY(kilpailu, kilpailija)
 );

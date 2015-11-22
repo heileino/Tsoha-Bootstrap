@@ -74,7 +74,19 @@
     KilpailuController::show($id);
   });
 
-  $routes->get('/kilpailu/omalista', function($id)){
+  $routes->get('/kilpailu/:id/muokkaa', function($id){
+    KilpailuController::edit($id);
+  });
+
+  $routes->post('/kilpailu/:id/muokkaa', function($id) {
+    KilpailuController::update($id);
+  });
+
+  $routes->post('/kilpailu/:id/poista', function($id){
+    KilpailuController::destroy($id);
+  });
+
+  $routes->get('/omakilpailulista', function(){
     KilpailuController::ownlist();
   });
 
