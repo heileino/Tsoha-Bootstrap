@@ -61,7 +61,7 @@
     KilpailuController::index();
   });
 
-  $routes->post('/kilpailu', function(){
+  $routes->post('/omakilpailulista', function(){
     KilpailuController::store();
   });
 

@@ -59,19 +59,27 @@ class KilpailuController extends BaseController{
 	public static function store(){
 		self::check_logged_in();
 		$params = $_POST;
+		$user_logged_in = self::get_user_logged_in();
 		$kilpailu = new Kilpailu(array(
 			'nimi' => $params['nimi'],
+			'kayttaja_id' => $user_logged_in,
 			'paivamaara' => $params['paivamaara'],	
 			'alkamisaika' => $params['alkamisaika'],
 			'jarjestaja' => $params['jarjestaja']
 		));
-		$user_logged_in = self::get_user_logged_in();
+		
+		$errors = $kilpailu->errors();
 
+		if(count($errors) > 0){
+			View::make('kilpailu/kilpailu_uusi.html', array('errors' => $errors, 'kilpailu' => $kilpailu));
+		} else{
+			$kilpailu->save_by_user($user_logged_in->id);
+			Redirect::to('/omakilpailulista', array('message' => 'Kilpailu on lisätty tietokantaan!'));
+		}
 
-		$kilpailu->save_by_user($user_logged_in->id);
-
-		Redirect::to('/kilpailu', array('message' => 'Kilpailu on lisätty tietokantaan!'));
+		
 	}
+
 
 	public static function destroy($id){
 		$kilpailu = new Kilpailu(array('id' => $id));
