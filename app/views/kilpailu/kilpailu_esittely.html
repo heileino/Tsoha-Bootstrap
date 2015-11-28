@@ -7,13 +7,21 @@
 	<p>
 		{{forms.edit_button("#{base_path}/kilpailu/#{kilpailu.id}/muokkaa")}}
 		{{forms.destroy_button("#{base_path}/kilpailu/#{kilpailu.id}/poista")}}
+		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/uusiajanmittauspiste" class="btn btn-success">Lisää uusi ajanmittauspiste</a>
 	</p>
 	{% endif %}
 	
 	<ul>
+		<li><strong>Järjestäjä:</strong> {{kilpailu.jarjestaja}}</li>
 		<li><strong>Nimi:</strong> {{kilpailu.nimi}}</li>
 		<li><strong>Päivämäärä:</strong> {{kilpailu.paivamaara}}</li>
-		<li><strong>Alkamisaika:</strong> {{kilpailu.alkamisaika}}</li>
-		<li><strong>Järjestäjä:</strong> {{kilpailu.jarjestaja}}</li>
+		<li><strong>Alkamisaika:</strong> {{kilpailu.alkamisaika}}</li>		
 	</ul>
+
+	<p>
+		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/osallistujat">Lähtölista</a>
+		<a href='#'>Tulokset</a>
+	</p>
+
+
 {% endblock %}

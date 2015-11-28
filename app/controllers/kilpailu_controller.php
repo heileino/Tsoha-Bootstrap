@@ -1,6 +1,7 @@
 <?php
 
 class KilpailuController extends BaseController{
+	
 	public static function index(){
 		$kilpailut = Kilpailu::all();
 		View::make('kilpailu/index.html', array('kilpailut' => $kilpailut));

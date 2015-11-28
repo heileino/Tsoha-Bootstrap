@@ -38,7 +38,6 @@ CREATE TABLE Toimitsijarooli(
 CREATE TABLE Ajanmittauspiste(
 	id SERIAL,
 	etaisyys DECIMAL,
-	aika TIME,
 	kilpailu INTEGER REFERENCES Kilpailu(id) ON DELETE CASCADE,
 	kirjaaja INTEGER REFERENCES Kirjaaja(id) ON DELETE CASCADE,
 	PRIMARY KEY(id, kilpailu)
@@ -48,6 +47,7 @@ CREATE TABLE Tulos(
 	kilpailija INTEGER REFERENCES Kilpailija(id) ON DELETE CASCADE,
 	kilpailu INTEGER,
 	ajanmittauspiste INTEGER,
+	aika TIME,
 	PRIMARY KEY(kilpailija, kilpailu, ajanmittauspiste),
 	FOREIGN KEY(ajanmittauspiste, kilpailu) REFERENCES Ajanmittauspiste(id, kilpailu) ON DELETE CASCADE
 );

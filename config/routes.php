@@ -103,6 +103,26 @@
   $routes->get('/logout', function(){
     KayttajaController::logout();
   });
+
+  // ajanmittauspiste
+
+  // $routes->get('/kilpailu/:id', function($id){
+  //   KilpailuController::show($id);
+  // });
+
+  $routes->get('/kilpailu/:id/uusiajanmittauspiste', function($id){
+    AjanmittauspisteController::create($id);
+  });
+
+  $routes->post('/kilpailu/:id/uusiajanmittauspiste', function($id){
+    AjanmittauspisteController::store($id);
+  });
+
+  // osallistuja
+
+  $routes->get('/kilpailu/:id/osallistujat', function($id) {
+    OsallistujaController::listaa($id);
+  });
   
 
   // kilpailun suunnittelunäkymiä

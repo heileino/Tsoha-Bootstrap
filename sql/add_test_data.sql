@@ -11,10 +11,10 @@ INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Juhani
 -- Kirjaaja-taulun testidata
 INSERT INTO Kirjaaja (nimi, tunnus, salasana) VALUES ('Kimmo Kirjuri', 'kimmo', 'kimmo123');
 -- Toimitsijarooli-taulun testidata
-INSERT INTO Toimitsijarooli (kilpailu, kirjaaja) VALUES ((SELECT id FROM Kilpailu WHERE nimi like 'Kampin%'), (SELECT id FROM Kirjaaja WHERE nimi like 'Kimmo%'));
+INSERT INTO Toimitsijarooli (kilpailu, kirjaaja) VALUES (1, 1);
 -- Ajanmittauspiste-taulun testidata
-INSERT INTO Ajanmittauspiste (etaisyys, aika, kilpailu, kirjaaja) VALUES (15.00, '00:23:21.7', (SELECT id FROM Kilpailu WHERE nimi like 'Töölö%'), (SELECT id FROM Kirjaaja WHERE nimi like 'Kimmo%'));
+INSERT INTO Ajanmittauspiste (etaisyys, kilpailu, kirjaaja) VALUES (15.00, 1, 1);
 -- Tulos-taulun testidata
-INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste) VALUES ((SELECT id FROM Kilpailija WHERE nimi like 'Hirmu%'), (SELECT kilpailu FROM Ajanmittauspiste WHERE etaisyys=15.00), (SELECT id FROM Ajanmittauspiste WHERE etaisyys=15.00));
+INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (1, 1, 1, '00:23:21.7');
 -- Osallistuja-taulun testidata
-INSERT INTO Osallistuja(kilpailu, kilpailija) VALUES ((SELECT id FROM Kilpailu WHERE nimi like 'Kampin%'), (SELECT id FROM Kilpailija WHERE nimi like 'Hirmu%'));
+INSERT INTO Osallistuja(kilpailu, kilpailija) VALUES (1, 1);

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Hiihtokilpailut</h1>
+	{% for osallistuja in osallistujat %}
+	<tr>
+		<td>{{osallistuja.kilpailija}}</td>			
+	</tr>
+	{% endfor %}
+{% endblock %}
+
