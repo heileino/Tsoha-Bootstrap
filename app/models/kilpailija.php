@@ -28,6 +28,7 @@ class Kilpailija extends BaseModel{
 		return $kilpailijat;
 	}
 
+
 	public static function find($id){
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE id = :id LIMIT 1');
 		$query->execute(array('id' => $id));

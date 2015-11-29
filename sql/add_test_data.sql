@@ -18,3 +18,4 @@ INSERT INTO Ajanmittauspiste (etaisyys, kilpailu, kirjaaja) VALUES (15.00, 1, 1)
 INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (1, 1, 1, '00:23:21.7');
 -- Osallistuja-taulun testidata
 INSERT INTO Osallistuja(kilpailu, kilpailija) VALUES (1, 1);
+INSERT INTO Osallistuja(kilpailu, kilpailija) VALUES (1, 2);

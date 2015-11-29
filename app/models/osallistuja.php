@@ -9,21 +9,38 @@ class Osallistuja extends BaseModel{
 	}
 
 	public function all($kilpailu_id){
-		$kilpailu = Kilpailu::find($kilpailu_id);
-		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE Osallistuja.kilpailija = :kilpailu');
+		$this->kilpailu = kilpailu_id;
+		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE Osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu->id));
+		$rows = $query->fetchAll();
+
+		$osallistuja = array();
+
+		foreach($rows as $row){
+			$osallistujat[] = new Osallistuja(array(
+				'kilpailu' => $kilpailu->id,
+				'kilpailija' => $row['kilpailija']
+			));
+		}
+
+		return $osallistujat;
+	}
+
+	public function all_return_names($kilpailu_id){
+		$query = DB::connection()->prepare('SELECT Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
+		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
 
 		$osallistujat = array();
 
 		foreach($rows as $row){
-			$tulokset[] = new Osallistuja(array(
-				'kilpailu' => $row['kilpailu'],
-				'kilpailija' => $row['kilpailija']
-			));
+			$osallistujat[] = array(				
+				'kilpailija_nimi' => $row['kilpailija_nimi'],
+				'kilpailija_seura' => $row['kilpailija_seura']
+			);
 		}
 
-		return $tulokset;
+		return $osallistujat;
 	}
 
 	public function find($kilpailu, $kilpailija){

@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Hiihtokilpailut</h1>
+<h1>Lähtölista</h1>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Nimi</th>
+			<th>Seura</th>			
+		</tr>
+	</thead>
+	<tbody>
 	{% for osallistuja in osallistujat %}
-	<tr>
-		<td>{{osallistuja.kilpailija}}</td>			
-	</tr>
+		<tr>
+			<td>{{osallistuja.kilpailija_nimi}}</td>
+			<td>{{osallistuja.kilpailija_seura}}</td>
+		</tr>
 	{% endfor %}
+	</tbody>
+</table>
 {% endblock %}
 

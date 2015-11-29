@@ -121,7 +121,7 @@
   // osallistuja
 
   $routes->get('/kilpailu/:id/osallistujat', function($id) {
-    OsallistujaController::listaa($id);
+    OsallistujaController::show($id);
   });
   
 
