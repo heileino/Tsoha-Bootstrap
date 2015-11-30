@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 {% import "macros/forms.html" as forms %}
+	{% if message %}
+	<div class="alert alert-success">
+  		{{message}}
+	</div>
+	{% endif %}
+
 	<h1>{{kilpailu.nimi}}</h1>
 	
 	{% if user_logged_in %}
@@ -13,14 +19,13 @@
 	
 	<ul>
 		<li><strong>Järjestäjä:</strong> {{kilpailu.jarjestaja}}</li>
-		<li><strong>Nimi:</strong> {{kilpailu.nimi}}</li>
 		<li><strong>Päivämäärä:</strong> {{kilpailu.paivamaara}}</li>
 		<li><strong>Alkamisaika:</strong> {{kilpailu.alkamisaika}}</li>		
 	</ul>
 
 	<p>
-		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/osallistujat">Lähtölista</a>
-		<a href='#'>Tulokset</a>
+		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/osallistujat">Osallistujalista</a>
+		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/tulokset">Tulokset</a>
 	</p>
 
 

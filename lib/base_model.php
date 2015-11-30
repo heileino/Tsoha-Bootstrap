@@ -77,4 +77,16 @@
       return $errors;
     }
 
+    public function validate_distance($input){
+      $errors = array();
+      $validator = new Valitron\Validator(array('input' => $input));
+      $validator->rule('numeric', 'input');
+      if(!$validator->validate()){
+        $errors[] = 'Etäisyys ei ollut sopiva!';
+      }
+
+      return $errors;
+    }
+
+
   }

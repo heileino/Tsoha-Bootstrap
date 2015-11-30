@@ -9,16 +9,15 @@ class Osallistuja extends BaseModel{
 	}
 
 	public function all($kilpailu_id){
-		$this->kilpailu = kilpailu_id;
 		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE Osallistuja.kilpailu = :kilpailu');
-		$query->execute(array('kilpailu' => $kilpailu->id));
+		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
 
 		$osallistuja = array();
 
 		foreach($rows as $row){
 			$osallistujat[] = new Osallistuja(array(
-				'kilpailu' => $kilpailu->id,
+				'kilpailu' => $kilpailu_id,
 				'kilpailija' => $row['kilpailija']
 			));
 		}

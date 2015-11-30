@@ -1,18 +1,36 @@
 <?php
 
-
 class Tulos extends BaseModel{
 	
 	public $kilpailija, $kilpailu, $ajanmittauspiste, $aika;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		//$this->validators = array('validate_nimi', 'validate_jarjestaja', 'validate_paivamaara', 'validate_alkamisaika');
+		//$this->validators = array('');
 	}
 
-	public function all(){
-		$query = DB::connection()->prepare('SELECT * FROM Tulos');
-		$query->execute();
+	// public function all(){
+	// 	$query = DB::connection()->prepare('SELECT * FROM Tulos');
+	// 	$query->execute();
+	// 	$rows = $query->fetchAll();
+
+	// 	$tulokset = array();
+
+	// 	foreach($rows as $row){
+	// 		$tulokset[] = new Tulos(array(
+	// 			'kilpailija' => $row['kilpailija'],
+	// 			'kilpailu' => $row['kilpailu'],
+	// 			'ajanmittauspiste' => $row['ajanmittauspiste'],
+	// 			'aika' => $row['aika']
+	// 		));
+	// 	}
+
+	// 	return $tulokset;
+	// }
+
+	public function all($kilpailu_id){
+		$query = DB::connection()->prepare('SELECT * FROM Tulos WHERE Tulos.kilpailu = :kilpailu');
+		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
 
 		$tulokset = array();

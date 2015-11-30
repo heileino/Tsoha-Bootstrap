@@ -1,6 +1,16 @@
 <?php
 
 class AjanmittauspisteController extends BaseController{
+	public static function list_by_kilpailu($kilpailu_id){
+		$ajanmittauspisteet = Ajanmittauspiste::all($kilpailu_id);
+		View::make('ajanmittauspiste/ajanmittauspiste_lista.html', array('ajanmittauspisteet' => $ajanmittauspisteet));
+	}
+
+	public static function show($kilpailu_id, $id){
+		$ajanmittauspiste = Ajanmittauspiste::find($kilpailu_id, $id);
+		View::make('ajanmittauspiste/ajanmittauspiste_esittely.html', array('ajanmittauspiste' => $ajanmittauspiste));
+	}
+
 	public static function create($kilpailu_id){
 		self::check_logged_in();
 		$kilpailu = Kilpailu::find($kilpailu_id);
@@ -11,13 +21,13 @@ class AjanmittauspisteController extends BaseController{
 
 	public static function store($kilpailu_id){
 		self::check_logged_in();
-		$kilpailu = Kilpailu::find($id);
+		//$kilpailu = Kilpailu::find($id);
 		$params = $_POST;
 		//$user_logged_in = self::get_user_logged_in();
 		$ajanmittauspiste = new Ajanmittauspiste(array(
 			'etaisyys' => $params['etaisyys'],
 			'kirjaaja' => $params['kirjaaja'],
-			'kilpailu' => $kilpailu->id
+			'kilpailu' => $kilpailu_id
 		));
 		
 		$errors = $ajanmittauspiste->errors();
@@ -26,7 +36,7 @@ class AjanmittauspisteController extends BaseController{
 			View::make('ajanmittauspiste/ajanmittauspiste_uusi.html', array('errors' => $errors, 'ajanmittauspiste' => $ajanmittauspiste));
 		} else{
 			$ajanmittauspiste->save();
-			Redirect::to('/kilpailu/' . $kilpailu_id, array('message' => 'Ajanmittauspiste on lisätty onnistuneesti kilpailuun!', 'ajanmittauspiste' => $ajanmittauspiste));
+			Redirect::to('/kilpailu/' . $kilpailu_id . '/ajanmittauspisteet', array('message' => 'Ajanmittauspiste on lisätty onnistuneesti kilpailuun!', 'ajanmittauspiste' => $ajanmittauspiste));
 		}
 
 	}

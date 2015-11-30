@@ -11,7 +11,7 @@
     </div>
   {% endif %}
 
-  <form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}">
+  <form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/ajanmittauspisteet">
     <div class="form-group">
       <label>Etäisyys lähdöstä</label>
       <input name="etaisyys" class="form-control" value="{{ajanmittauspiste.etaisyys}}" type="text">
@@ -19,11 +19,11 @@
     <div class="form-group">
       <label>Kirjaajan id</label>
       <input name="kirjaaja" class="form-control" value="{{ajanmittauspiste.kirjaaja}}" type="text">
-    </div>
+    <!--</div>
         <div class="form-group">
       <label></label>
       <input name="ḱilpailu" class="form-control" value="{{ajanmittauspiste.kilpailu}}" type="hidden">
-    </div>
+    </div> -->
 
     <!-- <div class="form-group">
       <label>Kirjaaja</label>
@@ -34,7 +34,7 @@
       </select>
     </div> -->
 
-    <div>  
+      <div>  
           <button type="submit" class="btn btn-primary">Tallenna</button>
       </div>
     </form>

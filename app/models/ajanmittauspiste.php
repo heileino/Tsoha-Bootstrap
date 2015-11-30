@@ -1,13 +1,12 @@
 <?php
 
-
 class Ajanmittauspiste extends BaseModel{
 	
 	public $id, $etaisyys, $kilpailu, $kirjaaja;
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		//$this->validators = array('validate_nimi', 'validate_jarjestaja', 'validate_paivamaara', 'validate_alkamisaika');
+		$this->validators = array('validate_etaisyys');
 	}
 
 	public function all(){
@@ -29,9 +28,9 @@ class Ajanmittauspiste extends BaseModel{
 		return $ajanmittauspisteet;
 	}
 
-	public function find($id){
-		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste WHERE id = :id LIMIT 1');
-		$query->execute(array('id' => $id));
+	public function find($kilpailu_id, $id){
+		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste WHERE id = :id  AND kilpailu = :kilpailu LIMIT 1');
+		$query->execute(array('id' => $id, 'kilpailu' => $kilpailu_id));
 		$row = $query->fetch();
 
 		if($row){
@@ -54,8 +53,8 @@ class Ajanmittauspiste extends BaseModel{
 		$query->execute(array('etaisyys' => $this->etaisyys, 'kilpailu' => $this->kilpailu, 'kirjaaja' => $this->kirjaaja));
 		$row = $query->fetch();
 		$this->id = $row['id'];
-		$this->kilpailu = $row['kilpailu'];
 	}
+
 
 	public function update(){
 		return null;
@@ -66,4 +65,9 @@ class Ajanmittauspiste extends BaseModel{
 		return null;
 
 	}
+
+	public function validate_etaisyys(){
+		return self::validate_distance($this->etaisyys);
+	}
+
 }

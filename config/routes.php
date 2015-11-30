@@ -106,17 +106,25 @@
 
   // ajanmittauspiste
 
-  // $routes->get('/kilpailu/:id', function($id){
-  //   KilpailuController::show($id);
-  // });
-
-  $routes->get('/kilpailu/:id/uusiajanmittauspiste', function($id){
-    AjanmittauspisteController::create($id);
+  
+  
+  $routes->post('/kilpailu/:kilpailu_id/ajanmittauspisteet', function($kilpailu_id){
+    AjanmittauspisteController::store($kilpailu_id);
   });
 
-  $routes->post('/kilpailu/:id/uusiajanmittauspiste', function($id){
-    AjanmittauspisteController::store($id);
+  $routes->get('/kilpailu/:kilpailu_id/uusiajanmittauspiste', function($kilpailu_id){
+    AjanmittauspisteController::create($kilpailu_id);
   });
+
+
+  $routes->get('/kilpailu/:kilpailu_id/ajanmittauspisteet', function($kilpailu_id){
+    AjanmittauspisteController::list_by_kilpailu($kilpailu_id);
+  });
+
+  $routes->get('/kilpailu/:kilpailu_id/ajanmittauspiste/:id', function($kilpailu_id, $id){
+    AjanmittauspisteController::show($kilpailu_id, $id);
+  });
+
 
   // osallistuja
 
@@ -125,7 +133,16 @@
   });
   
 
+  // tulos
+
+  $routes->get('/kilpailu/:id/tulokset', function($id){
+    TulosController::show($id);
+  });
+
+  
+
   // kilpailun suunnittelunäkymiä
+  
   $routes->get('/kilpailu/1/tulokset', function() {
   HelloWorldController::kilpailu_lopputulosesittely();
   });

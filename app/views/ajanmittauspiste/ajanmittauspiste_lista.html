@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Ajanmittauspisteet</h1>
+{% if message %}
+	<div class="alert alert-success">
+		<ul>				
+			<li>{{message}}</li>
+		</ul>
+	</div>
+{% endif %}
+
+	{% for ajanmittauspiste in ajanmittauspisteet %}
+		<tr>
+			<td><a href="{{base_path}}/kilpailu/{{ajanmittauspiste.kilpailu}}/ajanmittauspiste/{{ajanmittauspiste.id}}">{{ajanmittauspiste.etaisyys}} km</td>
+		</tr>
+	{% endfor %}
+
+{% endblock %}
