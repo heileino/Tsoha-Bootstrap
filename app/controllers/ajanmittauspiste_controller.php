@@ -1,16 +1,22 @@
 <?php
 
 class AjanmittauspisteController extends BaseController{
+	
+	// Metodi hakee kaikki parametrina saadun kilpailun kaikki ajanmittauspisteet kilpailun tietoja käsittelevältä mallilta 
+	// ja välittää ne ajanmittaupisteiden listauksesta vastaavalle näkymälle 
 	public static function list_by_kilpailu($kilpailu_id){
 		$ajanmittauspisteet = Ajanmittauspiste::all($kilpailu_id);
 		View::make('ajanmittauspiste/ajanmittauspiste_lista.html', array('ajanmittauspisteet' => $ajanmittauspisteet));
 	}
 
+	// Metodi etsii ajanmittauspistettä identifioivien parametrien avulla ajanmittauspisteen tietoja käsittelevältä mallilta
+	// ja välittää ne ajanmittauspisteen esittelystä vastaavalle näkymälle
 	public static function show($kilpailu_id, $id){
 		$ajanmittauspiste = Ajanmittauspiste::find($kilpailu_id, $id);
 		View::make('ajanmittauspiste/ajanmittauspiste_esittely.html', array('ajanmittauspiste' => $ajanmittauspiste));
 	}
 
+	// Metodi hakee parametrina saadun kilpailun kilpailun tietoja käsittelevältä mallilta ja välittää sen tiedot uuden ajanmittauspisteen luomisesta vastaavalle näkymälle  
 	public static function create($kilpailu_id){
 		self::check_logged_in();
 		$kilpailu = Kilpailu::find($kilpailu_id);
@@ -19,6 +25,8 @@ class AjanmittauspisteController extends BaseController{
 		View::make('ajanmittauspiste/ajanmittauspiste_uusi.html', array('kilpailu' => $kilpailu)); //LISÄTÄÄN VIELÄ LUETTELO KIRJAAJISTA
 	}
 
+	// Metodi luo uuden ajanmittaupiste-ilmentymän attribuuteilla, jotka se saa parametrina ja uuden ajanmittauspisteen luomisesta vastaavan näkymän lomakkeesta. 
+	// Uuden ajanmittaupiste-ilmentymän avulla sen attribuuttien tiedot tallennetaan ajanmittauspisteen tietoja käsittelevän mallin avulla tietokantaan.
 	public static function store($kilpailu_id){
 		self::check_logged_in();
 		//$kilpailu = Kilpailu::find($id);
