@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>Tulossivu</h1>
-
-
+	<h1>{{kilpailu.nimi}}</h1>
+	<h2>Tulossivu</h2>
+	<div>
+		{% for tulos in tulokset %}
+			<a href="#">Ajanottopiste {{tulos.ajanmittauspiste}}</ba>
+		{% endfor %}
+	</div>
 {% endblock %}
