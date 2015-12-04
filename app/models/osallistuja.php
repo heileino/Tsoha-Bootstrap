@@ -8,7 +8,7 @@ class Osallistuja extends BaseModel{
 		//$this->validators = array();
 	}
 
-	public function all($kilpailu_id){
+	public static function all($kilpailu_id){
 		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE Osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
@@ -25,7 +25,7 @@ class Osallistuja extends BaseModel{
 		return $osallistujat;
 	}
 
-	public function all_return_names($kilpailu_id){
+	public static function all_return_names($kilpailu_id){
 		$query = DB::connection()->prepare('SELECT Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
@@ -42,7 +42,7 @@ class Osallistuja extends BaseModel{
 		return $osallistujat;
 	}
 
-	public function find($kilpailu, $kilpailija){
+	public static function find($kilpailu, $kilpailija){
 		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE $kilpailu = :kilpailu AND $kilpailija = :kilpailija LIMIT 1');
 		$query->execute(array('kilpailu' => $kilpailu, 'kilpailija' => $kilpailija));
 		$row = $query->fetch();
