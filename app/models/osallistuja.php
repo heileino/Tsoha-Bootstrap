@@ -33,7 +33,8 @@ class Osallistuja extends BaseModel{
 		$osallistujat = array();
 
 		foreach($rows as $row){
-			$osallistujat[] = array(				
+			$osallistujat[] = array(
+				'kilpailu' => $kilpailu_id,			
 				'kilpailija_nimi' => $row['kilpailija_nimi'],
 				'kilpailija_seura' => $row['kilpailija_seura']
 			);
@@ -57,7 +58,6 @@ class Osallistuja extends BaseModel{
 		}
 
 		return null;
-
 	}
 
 	public function save(){

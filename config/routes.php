@@ -127,14 +127,16 @@
 
 
   // osallistuja
+  $routes->get('/kilpailu/:kilpailu_id/osallistujat', function($kilpailu_id) {
+    OsallistujaController::show($kilpailu_id);
+  });
 
-  $routes->get('/kilpailu/:id/osallistujat', function($id) {
-    OsallistujaController::show($id);
+  $routes->get('/kilpailu/:kilpailu_id/muokkaaosallistujia', function($kilpailu_id){
+    OsallistujaController::editlist($kilpailu_id);
   });
   
 
   // tulos
-
   $routes->get('/kilpailu/:id/tulokset', function($id){
     TulosController::show($id);
   });

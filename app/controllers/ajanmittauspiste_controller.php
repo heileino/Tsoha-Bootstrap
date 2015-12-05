@@ -20,9 +20,8 @@ class AjanmittauspisteController extends BaseController{
 	public static function create($kilpailu_id){
 		self::check_logged_in();
 		$kilpailu = Kilpailu::find($kilpailu_id);
-		
-		//$kirjaaja = Kirjaaja:all();
-		View::make('ajanmittauspiste/ajanmittauspiste_uusi.html', array('kilpailu' => $kilpailu)); //LISÄTÄÄN VIELÄ LUETTELO KIRJAAJISTA
+		$kirjaajat = Kirjaaja::all();
+		View::make('ajanmittauspiste/ajanmittauspiste_uusi.html', array('kilpailu' => $kilpailu, 'kirjaajat' => $kirjaajat));
 	}
 
 	// Metodi luo uuden ajanmittaupiste-ilmentymän attribuuteilla, jotka se saa parametrina ja uuden ajanmittauspisteen luomisesta vastaavan näkymän lomakkeesta. 

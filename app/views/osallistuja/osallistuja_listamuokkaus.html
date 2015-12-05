@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-group">
+  <label>Osallistujat</label>
+  <select class="form-control" name="osallistujat[]" multiple="">
+    {% for osallistuja in osallistujat %}
+      <option value="{{osallistuja.id}}">{{osallistuja.kilpailija_nimi}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+{% endblock %}
