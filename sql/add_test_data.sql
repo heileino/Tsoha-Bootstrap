@@ -8,6 +8,7 @@ INSERT INTO Kilpailu (kayttaja_id, nimi, paivamaara, alkamisaika, jarjestaja) VA
 -- Kilpailija-taulun testidata
 INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Hirmu Hiihtäjä', 'Kampin Hiihtoseura', 'FIN', 1949);
 INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Juhani Jalkatyö', 'Vuosaaren Viesti', 'EST', 1949);
+INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES ('Sami Sauvoja', 'Töölön Taisto', 'FIN', 1989);
 -- Kirjaaja-taulun testidata
 INSERT INTO Kirjaaja (nimi, tunnus, salasana) VALUES ('Kimmo Kirjuri', 'kimmo', 'kimmo123');
 -- Toimitsijarooli-taulun testidata

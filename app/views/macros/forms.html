@@ -9,3 +9,9 @@
     <button type="submit" class="btn btn-default">{{text|default('Muokkaa')}}</button>
   </form>
 {% endmacro %}
+
+{% macro add_button(action, text) %}
+  <form method="post" action="{{action}}" style="display: inline-block;">
+    <button type="submit" class="btn btn-success">{{text|default('Lisää')}}</button>
+  </form>
+{% endmacro %}

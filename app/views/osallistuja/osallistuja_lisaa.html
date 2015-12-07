@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/osallistujat">
+<div class="form-group">
+  <label>Valitse osallistujat listasta</label>
+  <select class="form-control" name="uudet_osallistujat[]" multiple="">
+    {% for ei_osallistuja in ei_osallistujat %}
+      <option value="{{ei_osallistuja.id}}">{{ei_osallistuja.nimi}}</option>
+    {% endfor %}
+  </select>
+</div>
+<div class="form-group">
+ 	<button type="submit" class="btn btn-primary">Tallenna</button>
+</div>
+</form>
+
+<!--
+<div class="checkbox">
+ 	<h1>Valitse osallistujat kilpailuun {{kilpailu.nimi}}</h1>
+ 	<form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/muokkaaosallistujia">
+ 	{% for kilpailija in kilpailijat %}
+ 		<input type="checkbox" name="kilpailija" value="{{kilpailija.id}}">{{kilpailija.nimi}}<br>		
+  	{% endfor %}
+  	<div class="form-group">
+      	<button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  	</form>
+</div>
+-->
+
+{% endblock %}

@@ -131,8 +131,12 @@
     OsallistujaController::show($kilpailu_id);
   });
 
-  $routes->get('/kilpailu/:kilpailu_id/muokkaaosallistujia', function($kilpailu_id){
-    OsallistujaController::editlist($kilpailu_id);
+  $routes->get('/kilpailu/:kilpailu_id/lisaa', function($kilpailu_id){
+    OsallistujaController::show_not_osallistuja($kilpailu_id);
+  });
+
+  $routes->post('/kilpailu/:kilpailu_id/osallistujat', function($kilpailu_id) {
+    OsallistujaController::store($kilpailu_id);
   });
   
 

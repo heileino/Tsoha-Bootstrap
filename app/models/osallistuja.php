@@ -26,7 +26,7 @@ class Osallistuja extends BaseModel{
 	}
 
 	public static function all_return_names($kilpailu_id){
-		$query = DB::connection()->prepare('SELECT Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
+		$query = DB::connection()->prepare('SELECT Kilpailija.id as kilpailija_id, Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
 
@@ -34,7 +34,8 @@ class Osallistuja extends BaseModel{
 
 		foreach($rows as $row){
 			$osallistujat[] = array(
-				'kilpailu' => $kilpailu_id,			
+				'kilpailu' => $kilpailu_id,
+				'kilpailija_id' => $row['kilpailija_id'],		
 				'kilpailija_nimi' => $row['kilpailija_nimi'],
 				'kilpailija_seura' => $row['kilpailija_seura']
 			);
@@ -42,6 +43,43 @@ class Osallistuja extends BaseModel{
 
 		return $osallistujat;
 	}
+	// tällä hetkellä turha
+	public static function all_kilpailija_id($kilpailu_id){
+		$query = DB::connection()->prepare('SELECT Kilpailija.id as kilpailija_id FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
+		$query->execute(array('kilpailu' => $kilpailu_id));
+		$rows = $query->fetchAll();
+
+		$osallistuvat_kilpailijat = array();
+
+		foreach($rows as $row){
+			$osallistuvat_kilpailijat[] = array(				
+				'kilpailija_id' => $row['kilpailija_id'],		
+			);
+		}
+
+		return $osallistuvat_kilpailijat;
+	}
+
+	public static function all_not_osallistuja($kilpailu_id){
+		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE kilpailija.id not IN (SELECT osallistuja.kilpailija FROM Osallistuja WHERE osallistuja.kilpailu = :kilpailu)');
+		$query->execute(array('kilpailu' => $kilpailu_id));
+		$rows = $query->fetchAll();
+
+		$ei_osallistujat = array();
+
+		foreach($rows as $row){
+			$ei_osallistujat[] = array(
+				'id' => $row['id'],
+				'nimi' => $row['nimi'],
+				'seura' => $row['seura'],
+				'kansallisuus' =>$row['kansallisuus'],
+				'syntymavuosi' => $row['syntymavuosi']
+			);
+		}
+
+		return $ei_osallistujat;
+	}
+	
 
 	public static function find($kilpailu, $kilpailija){
 		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE $kilpailu = :kilpailu AND $kilpailija = :kilpailija LIMIT 1');
@@ -60,14 +98,18 @@ class Osallistuja extends BaseModel{
 		return null;
 	}
 
+
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Osallistuja (kilpailu, kilpailija) VALUES (:kilpailu, :kilpailija)');
 		$query->execute(array('kilpailu' => $this->kilpailu, 'kilpailija' => $this->kilpailija));
 		$row = $query->fetch();
 	}
 
+	// tällä hetkellä ei käyttöä
 	public function update(){
-
+		$query = DB::connection()->prepare('UPDATE Osallistuja SET kilpailija = :kilpailija WHERE kilpailu = :kilpailu');
+		$query->execute(array('kilpailu' => $this->kilpailu, 'kilpailija' => $this->kilpailija));
+		$row = $query->fetch();
 	}
 
 	public function destroy(){
