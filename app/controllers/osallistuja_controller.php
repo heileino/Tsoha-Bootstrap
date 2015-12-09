@@ -15,13 +15,14 @@ class OsallistujaController extends BaseController{
 		$kilpailijat = Kilpailija::all();
 		View::make('osallistuja/osallistuja_listamuokkaus.html', array('osallistujat' => $osallistujat, 'kilpailu' => $kilpailu, 'kilpailijat' => $kilpailijat, 'osallistuvat' => $osallistuvat_kilpailijat));
 	}
-
+	// Metodi palauttaa kaikki ne kilpailijat, jotka eivät ole osallistujina parametrina saatuun kilpailuun
 	public static function show_not_osallistuja($kilpailu_id){
 		$ei_osallistujat = Osallistuja::all_not_osallistuja($kilpailu_id);
 		$kilpailu = Kilpailu::find($kilpailu_id);
 		View::make('osallistuja/osallistuja_lisaa.html', array('ei_osallistujat' => $ei_osallistujat, 'kilpailu' => $kilpailu));
 	}
 
+	// Metodi tallentaa parametrina saadun kilpailun osallistujiksi osallistujien lisäyksestä vastaavan näkymän lomakkeessa valitut kilpailijat.
 	public static function store($kilpailu_id){
 		$params = $_POST['uudet_osallistujat'];
 		

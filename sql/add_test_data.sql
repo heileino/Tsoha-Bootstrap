@@ -14,9 +14,14 @@ INSERT INTO Kirjaaja (nimi, tunnus, salasana) VALUES ('Kimmo Kirjuri', 'kimmo', 
 -- Toimitsijarooli-taulun testidata
 INSERT INTO Toimitsijarooli (kilpailu, kirjaaja) VALUES (1, 1);
 -- Ajanmittauspiste-taulun testidata
+INSERT INTO Ajanmittauspiste (etaisyys, kilpailu, kirjaaja) VALUES (10.00, 1, 1);
 INSERT INTO Ajanmittauspiste (etaisyys, kilpailu, kirjaaja) VALUES (15.00, 1, 1);
 -- Tulos-taulun testidata
 INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (1, 1, 1, '00:23:21.7');
+INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (2, 1, 1, '00:23:32.9');
+INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (1, 1, 2, '00:43:21.7');
+INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (2, 1, 2, '00:44:31.9');
+
 -- Osallistuja-taulun testidata
 INSERT INTO Osallistuja(kilpailu, kilpailija) VALUES (1, 1);
 INSERT INTO Osallistuja(kilpailu, kilpailija) VALUES (1, 2);

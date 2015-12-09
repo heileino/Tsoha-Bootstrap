@@ -104,10 +104,9 @@
     KayttajaController::logout();
   });
 
+
   // ajanmittauspiste
 
-  
-  
   $routes->post('/kilpailu/:kilpailu_id/ajanmittauspisteet', function($kilpailu_id){
     AjanmittauspisteController::store($kilpailu_id);
   });
@@ -144,6 +143,11 @@
   $routes->get('/kilpailu/:id/tulokset', function($id){
     TulosController::show($id);
   });
+
+  $routes->post('/kilpailu/:id/tulokset', function($id){
+    TulosController::show_ajanottopiste_data($id);
+  });
+
 
   
 

@@ -28,6 +28,26 @@ class Ajanmittauspiste extends BaseModel{
 		return $ajanmittauspisteet;
 	}
 
+	public function all_from_kilpailu($kilpailu_id){
+		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste WHERE kilpailu = :kilpailu');
+		$query->execute(array('kilpailu' => $kilpailu_id));
+		$rows = $query->fetchAll();
+
+		$ajanmittauspisteet = array();
+
+		foreach($rows as $row){
+			$ajanmittauspisteet[] = new Ajanmittauspiste(array(
+				'id' => $row['id'],
+				'etaisyys' => $row['etaisyys'],
+				'kilpailu' => $row['kilpailu'],
+				'kirjaaja' => $row['kirjaaja']
+			));
+		}
+
+		return $ajanmittauspisteet;
+
+	}
+
 	public function find($kilpailu_id, $id){
 		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste WHERE id = :id  AND kilpailu = :kilpailu LIMIT 1');
 		$query->execute(array('id' => $id, 'kilpailu' => $kilpailu_id));

@@ -5,7 +5,7 @@ class KilpailijaController extends BaseController{
 	// Metodi listaa kaikki järjestelmässä olevat kilpailijat pyytämällä niitä kilpailijatietokannasta kilpailijan tietoja hallinnoivan mallin avulla.
 	// Lisäksi metodi ohjaa listaa kaikista kilpailuista näyttävälle näkymälle ja välittää sille taulukon kaikista haetuista kilpailijoista. 
 	public static function kilpailijalista(){
-		self::check_logged_in();
+		//self::check_logged_in();
 		$kilpailijat = Kilpailija::all();
 		View::make('kilpailija/kilpailijat_lista.html', array('kilpailijat' => $kilpailijat));
 	}

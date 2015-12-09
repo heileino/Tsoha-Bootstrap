@@ -10,10 +10,12 @@
 	{% endif %}
 	
 	<h1>{{attributes.nimi}}</h1>
+	{% if user_logged_in %}
 	<p>
 		{{forms.edit_button("#{base_path}/kilpailija/#{attributes.id}/muokkaa")}}
 		{{forms.destroy_button("#{base_path}/kilpailija/#{attributes.id}/poista")}}
 	</p>
+	{% endif %}
 	
 	<ul>
 		<li><strong>Seura:</strong> {{attributes.seura}}</li>

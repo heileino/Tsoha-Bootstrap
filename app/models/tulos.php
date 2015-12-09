@@ -47,6 +47,25 @@ class Tulos extends BaseModel{
 		return $tulokset;
 	}
 
+	public function all_from_ajanmittauspiste($kilpailu_id, $ajanmittauspiste){
+		$query = DB::connection()->prepare('SELECT * FROM Tulos WHERE Tulos.kilpailu = :kilpailu AND Tulos.ajanmittauspiste = :ajanmittauspiste');
+		$query->execute(array('kilpailu' => $kilpailu_id, 'ajanmittauspiste' => $ajanmittauspiste));
+		$rows = $query->fetchAll();
+
+		$tulokset = array();
+
+		foreach($rows as $row){
+			$tulokset[] = new Tulos(array(
+				'kilpailija' => $row['kilpailija'],
+				'kilpailu' => $row['kilpailu'],
+				'ajanmittauspiste' => $row['ajanmittauspiste'],
+				'aika' => $row['aika']
+			));
+		}
+
+		return $tulokset;
+	}
+
 	public function find($kilpailija, $kilpailu, $ajanmittauspiste){
 		$query = DB::connection()->prepare('SELECT * FROM Tulos WHERE $kilpailija = :kilpailija AND $kilpailu = :kilpailu AND $ajanmittauspiste = :ajanmittauspiste LIMIT 1');
 		$query->execute(array('kilpailija' => $kilpailija, 'kilpailu' => $kilpailu, 'ajanmittauspiste' => $ajanmittauspiste));
