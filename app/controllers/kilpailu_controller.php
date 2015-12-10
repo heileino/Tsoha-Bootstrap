@@ -1,18 +1,16 @@
 <?php
-
+/* Luokka toimii kontrollerina kilpailun mallien ja näkymien välillä */
 class KilpailuController extends BaseController{
-	
+	/* Metodi kerää kaikki järjestelmän kilpailut ja tarjoaa ne kilpailujen listauksesta vastaavalle näkymälle */
 	public static function index(){
 		$kilpailut = Kilpailu::all();
 		View::make('kilpailu/index.html', array('kilpailut' => $kilpailut));
 	}
-
+        /* Metodi kerää kaikki kirjautuneen käyttäjän kilpailut ja tarjoaa ne käyttäjän omien kilpailujen listauksesta vastaavalle näkymälle */
 	public static function ownlist(){
 		self::check_logged_in();
-
 		$user_logged_in = self::get_user_logged_in();
 		$kilpailut = Kilpailu::all_by_user($user_logged_in->id);
-
 		View::make('kilpailu/kilpailu_omalista.html', array('kilpailut' => $kilpailut));
 	}
 

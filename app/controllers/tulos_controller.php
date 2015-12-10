@@ -18,6 +18,5 @@ class TulosController extends BaseController{
 		$ajanmittauspisteet = Ajanmittauspiste::all_from_kilpailu($kilpailu_id);
 
 		View::make('tulos/tulos_etusivu.html', array('mittauspiste'=> $ajanmittauspiste, 'tuloksia' => $tuloksia, 'kilpailu' => $kilpailu, 'ajanmittauspisteet' => $ajanmittauspisteet));
-
 	}
 }
