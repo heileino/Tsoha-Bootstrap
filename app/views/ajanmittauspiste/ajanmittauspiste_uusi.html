@@ -10,7 +10,7 @@
       </ul>
     </div>
   {% endif %}
-  <form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/ajanmittauspisteet">
+  <form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}">
     <div class="form-group">
       <label>Etäisyys lähdöstä</label>
       <input name="etaisyys" class="form-control" value="{{ajanmittauspiste.etaisyys}}" type="text">

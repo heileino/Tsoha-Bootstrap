@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>{{kilpailu.nimi}}</h1>
-<h2>Tulossivu</h2>
+
 
 <form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/tulokset">
 	<div class="form-group">
   		<label>Valitse ajanmittauspiste</label>
   		<select class="form-control" name="ajanmittauspiste">
     	{% for ajanmittauspiste in ajanmittauspisteet %}
-      		<option value="{{ajanmittauspiste.id}}">Ajanmittauspiste {{ajanmittauspiste.etaisyys}}km</option>
+      		<option value="{{ajanmittauspiste.id}}">Ajanmittauspiste {{ajanmittauspiste.etaisyys}} km</option>
     	{% endfor %}
   	</select>
 	</div>
@@ -16,6 +16,7 @@
       		<button type="submit" class="btn btn-primary">Hae tiedot</button>
     </div>
 </form>
+<h2>Tilanne {{mittauspiste.etaisyys}} km kohdalla</h2>
 <div>
 	<table class="table table-striped table-bordered">
 		<thead>
@@ -24,17 +25,15 @@
 				<th>Seura</th>			
 				<th>Kansallisuus</th>
 				<th>Aika</th>
-				<th>Edellä seuraavaa</th>
-				<th>Jäljessä edellistä</th>			
 			</tr>
 		</thead>
 
 		<tbody>
 		{% for t in tuloksia %}
 			<tr>
-				<td>{{kilpailija.nimi}}</td>
-				<td>{{kilpailija.seura}}</td>			
-				<td>{{kilpailija.kansallisuus}}</td>
+				<td>{{t.nimi}}</td>
+				<td>{{t.seura}}</td>			
+				<td>{{t.kansallisuus}}</td>
 				<td>{{t.aika}}</td>
 			</tr>
 		{% endfor %}

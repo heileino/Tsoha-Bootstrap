@@ -9,26 +9,7 @@ class Tulos extends BaseModel{
 		//$this->validators = array('');
 	}
 
-	// public function all(){
-	// 	$query = DB::connection()->prepare('SELECT * FROM Tulos');
-	// 	$query->execute();
-	// 	$rows = $query->fetchAll();
-
-	// 	$tulokset = array();
-
-	// 	foreach($rows as $row){
-	// 		$tulokset[] = new Tulos(array(
-	// 			'kilpailija' => $row['kilpailija'],
-	// 			'kilpailu' => $row['kilpailu'],
-	// 			'ajanmittauspiste' => $row['ajanmittauspiste'],
-	// 			'aika' => $row['aika']
-	// 		));
-	// 	}
-
-	// 	return $tulokset;
-	// }
-
-	public function all($kilpailu_id){
+	public static function all($kilpailu_id){
 		$query = DB::connection()->prepare('SELECT * FROM Tulos WHERE Tulos.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
@@ -47,26 +28,30 @@ class Tulos extends BaseModel{
 		return $tulokset;
 	}
 
-	public function all_from_ajanmittauspiste($kilpailu_id, $ajanmittauspiste){
-		$query = DB::connection()->prepare('SELECT * FROM Tulos WHERE Tulos.kilpailu = :kilpailu AND Tulos.ajanmittauspiste = :ajanmittauspiste');
+	public static function all_from_ajanmittauspiste($kilpailu_id, $ajanmittauspiste){
+		$query = DB::connection()->prepare('SELECT Kilpailija.nimi as nimi, Kilpailija.seura as seura, Kilpailija.kansallisuus as kansallisuus, kilpailija, kilpailu, ajanmittauspiste, aika FROM Tulos, Kilpailija WHERE Tulos.kilpailija = Kilpailija.id AND Tulos.kilpailu = :kilpailu AND Tulos.ajanmittauspiste = :ajanmittauspiste ORDER BY aika ASC');
 		$query->execute(array('kilpailu' => $kilpailu_id, 'ajanmittauspiste' => $ajanmittauspiste));
 		$rows = $query->fetchAll();
 
 		$tulokset = array();
 
 		foreach($rows as $row){
-			$tulokset[] = new Tulos(array(
+			$tulokset[] = array(
+				'nimi' => $row['nimi'],
+				'seura' => $row['seura'],
+				'kansallisuus' => $row['kansallisuus'],
 				'kilpailija' => $row['kilpailija'],
 				'kilpailu' => $row['kilpailu'],
 				'ajanmittauspiste' => $row['ajanmittauspiste'],
 				'aika' => $row['aika']
-			));
+			);
 		}
 
 		return $tulokset;
 	}
 
-	public function find($kilpailija, $kilpailu, $ajanmittauspiste){
+
+	public static function find($kilpailija, $kilpailu, $ajanmittauspiste){
 		$query = DB::connection()->prepare('SELECT * FROM Tulos WHERE $kilpailija = :kilpailija AND $kilpailu = :kilpailu AND $ajanmittauspiste = :ajanmittauspiste LIMIT 1');
 		$query->execute(array('kilpailija' => $kilpailija, 'kilpailu' => $kilpailu, 'ajanmittauspiste' => $ajanmittauspiste));
 		$row = $query->fetch();

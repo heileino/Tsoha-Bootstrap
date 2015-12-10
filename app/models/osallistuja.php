@@ -26,7 +26,7 @@ class Osallistuja extends BaseModel{
 	}
 
 	public static function all_return_names($kilpailu_id){
-		$query = DB::connection()->prepare('SELECT Kilpailija.id as kilpailija_id, Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
+		$query = DB::connection()->prepare('SELECT Kilpailija.id as kilpailija_id, Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura, Kilpailija.kansallisuus as kilpailija_kansallisuus FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));
 		$rows = $query->fetchAll();
 
@@ -37,7 +37,8 @@ class Osallistuja extends BaseModel{
 				'kilpailu' => $kilpailu_id,
 				'kilpailija_id' => $row['kilpailija_id'],		
 				'kilpailija_nimi' => $row['kilpailija_nimi'],
-				'kilpailija_seura' => $row['kilpailija_seura']
+				'kilpailija_seura' => $row['kilpailija_seura'],
+				'kilpailija_kansallisuus' => $row['kilpailija_kansallisuus']
 			);
 		}
 

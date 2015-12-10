@@ -1,29 +1,9 @@
 <?php
 
-  // $routes->get('/', function() {
-  //   HelloWorldController::kisalista_esittely();
-  // });
-
-  $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-  });
-
-  $routes->get('/kilpailulista', function() {
-    HelloWorldController::kisalista_esittely();
-  });
-
-  $routes->get('/kilpailulista/1', function() {
-    HelloWorldController::kisalista_muokkaus();
-  });
-
   // kilpailija
 
-  //$routes->get('/kilpailija', function() {
-  //  HelloWorldController::kilpailija_esittely();
-  //});
-
   $routes->get('/kilpailija', function() {
-    KilpailijaController::kilpailijalista();
+    KilpailijaController::show();
   });  
 
   $routes->post('/kilpailija', function(){
@@ -35,7 +15,7 @@
   });
 
   $routes->get('/kilpailija/:id', function($id) {
-    KilpailijaController::kilpailijaesittely($id);
+    KilpailijaController::show_kilpailija($id);
   });
 
   $routes->get('/kilpailija/:id/muokkaa', function($id) {
@@ -107,7 +87,7 @@
 
   // ajanmittauspiste
 
-  $routes->post('/kilpailu/:kilpailu_id/ajanmittauspisteet', function($kilpailu_id){
+  $routes->post('/kilpailu/:kilpailu_id', function($kilpailu_id){
     AjanmittauspisteController::store($kilpailu_id);
   });
 
@@ -117,7 +97,7 @@
 
 
   $routes->get('/kilpailu/:kilpailu_id/ajanmittauspisteet', function($kilpailu_id){
-    AjanmittauspisteController::list_by_kilpailu($kilpailu_id);
+    AjanmittauspisteController::show_from_kilpailu($kilpailu_id);
   });
 
   $routes->get('/kilpailu/:kilpailu_id/ajanmittauspiste/:id', function($kilpailu_id, $id){

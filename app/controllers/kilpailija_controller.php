@@ -2,15 +2,15 @@
 
 class KilpailijaController extends BaseController{
 	
-	// Metodi listaa kaikki järjestelmässä olevat kilpailijat pyytämällä niitä kilpailijatietokannasta kilpailijan tietoja hallinnoivan mallin avulla.
-	// Lisäksi metodi ohjaa listaa kaikista kilpailuista näyttävälle näkymälle ja välittää sille taulukon kaikista haetuista kilpailijoista. 
-	public static function kilpailijalista(){
-		//self::check_logged_in();
+	/* Metodi listaa kaikki järjestelmässä olevat kilpailijat pyytämällä niitä kilpailijatietokannasta kilpailijan tietoja hallinnoivan mallin avulla.
+	// Lisäksi metodi ohjaa listaa kaikista kilpailuista näyttävälle näkymälle ja välittää sille taulukon kaikista haetuista kilpailijoista. */
+	public static function show(){
 		$kilpailijat = Kilpailija::all();
-		View::make('kilpailija/kilpailijat_lista.html', array('kilpailijat' => $kilpailijat));
+		View::make('kilpailija/kilpailija_lista.html', array('kilpailijat' => $kilpailijat));
 	}
 	
-	public static function kilpailijaesittely($id){
+	/* */
+	public static function show_kilpailija($id){
 		$kilpailija = Kilpailija::find($id);
 		View::make('kilpailija/kilpailija_esittely.html', array('attributes' => $kilpailija));
 	}
@@ -32,8 +32,7 @@ class KilpailijaController extends BaseController{
 			Redirect::to('/kilpailija', array('message' => 'Kilpailijan tiedot on lisätty tietokantaan!'));
 		} else{
 			View::make('kilpailija/kilpailija_uusi.html', array('errors' => $errors, 'attributes' => $attributes));
-		}
-		
+		}	
 	}
 
 	public static function create(){
