@@ -78,8 +78,9 @@ class Tulos extends BaseModel{
 	}
 
 	public function update(){
-		return null;
-
+		$query = DB::connection()->prepare('UPDATE Tulos SET kilpailija = :kilpailija, kilpailu = :kilpailu, ajanmittauspiste = :ajanmittauspiste, aika = :aika WHERE kilpailu = :kilpailu AND kilpailija = :kilpailija AND ajanmittauspiste = :ajanmittauspiste');
+		$query->execute(array('kilpailija' => $this->kilpailija, 'kilpailu' => $this->kilpailu, 'ajanmittauspiste' => $this->ajanmittauspiste, 'aika' => $this->aika));
+		$row = $query->fetch();
 	}
 
 	public function destroy(){

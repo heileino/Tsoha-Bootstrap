@@ -120,12 +120,21 @@
   
 
   // tulos
+
+  $routes->post('/kilpailu/:kilpailu_id/tulokset/:ajanmittauspiste_id', function($kilpailu_id, $ajanmittauspiste_id){
+    TulosController::store($kilpailu_id, $ajanmittauspiste_id);
+  });
+
+  $routes->get('/kilpailu/:kilpailu_id/tulokset/:ajanmittauspiste_id', function($kilpailu_id){
+    TulosController::create($kilpailu_id);
+  });
+
   $routes->get('/kilpailu/:id/tulokset', function($id){
     TulosController::show($id);
   });
 
-  $routes->post('/kilpailu/:id/tulokset', function($id){
-    TulosController::show_ajanottopiste_data($id);
+  $routes->post('/kilpailu/:kilpailu_id/tulokset/:ajanmittauspiste_id', function($kilpailu_id){
+    TulosController::show_ajanottopiste_data($kilpailu_id);
   });
 
 

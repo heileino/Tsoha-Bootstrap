@@ -36,8 +36,6 @@ class OsallistujaController extends BaseController{
 		
 			$osallistuja->save();
 		}
-
 		Redirect::to('/kilpailu/' . $kilpailu_id . '/osallistujat', array('message' => 'Osallistuja lisätty onnistuneesti!')); 
-		
 	}
 }
