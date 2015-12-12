@@ -5,11 +5,13 @@ class Kilpailu extends BaseModel{
 	
 	public $id, $kayttaja_id, $nimi, $paivamaara, $alkamisaika, $jarjestaja;
 
+	/* Luokan konstruktori */
 	public function __construct($attributes){
 		parent::__construct($attributes);
 		$this->validators = array('validate_nimi', 'validate_jarjestaja', 'validate_paivamaara', 'validate_alkamisaika');
 	}
 
+	/* Metodi listaa kaikki kilpailut */
 	public static function all(){
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailu');
 		$query->execute();
@@ -30,6 +32,7 @@ class Kilpailu extends BaseModel{
 		return $kilpailut;
 	}
 
+	/* Metodi listaa kaikki parametrina saadulle käyttätunnukselle kuuluvat kilpailut */
 	public static function all_by_user($user){
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailu WHERE kayttaja_id = :kayttaja_id');
 		$query->execute(array('kayttaja_id' => $user));
@@ -72,17 +75,11 @@ class Kilpailu extends BaseModel{
 
 		return null;
 	}
-
+	
+	/* Metodi tallentaa attribuuttien tietosisällön tietokantaan */
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Kilpailu (nimi, paivamaara, alkamisaika, jarjestaja) VALUES (:nimi, :paivamaara, :alkamisaika, :jarjestaja) RETURNING id');
 		$query->execute(array('nimi' => $this->nimi, 'paivamaara' => $this->paivamaara, 'alkamisaika' => $this->alkamisaika, 'jarjestaja' => $this->jarjestaja));
-		$row = $query->fetch();
-		$this->id = $row['id'];
-	}
-
-	public function save_by_user($user_id){
-		$query = DB::connection()->prepare('INSERT INTO Kilpailu (kayttaja_id, nimi, paivamaara, alkamisaika, jarjestaja) VALUES (:kayttaja_id, :nimi, :paivamaara, :alkamisaika, :jarjestaja) RETURNING id');
-		$query->execute(array('kayttaja_id' => $user_id, 'nimi' => $this->nimi, 'paivamaara' => $this->paivamaara, 'alkamisaika' => $this->alkamisaika, 'jarjestaja' => $this->jarjestaja));
 		$row = $query->fetch();
 		$this->id = $row['id'];
 	}

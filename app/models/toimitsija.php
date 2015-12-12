@@ -1,12 +1,16 @@
 <?php
 
-public $kilpailu, $kirjaaja;
+/* Luokka määrittää toimitsijaroolin ominaisuudet ja palvelut */
+class Toimitsija extends BaseModel{
 
+public $kilpailu, $kirjaaja;
+	
+	/* Luokan konstruktori */
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		// tähän validaattorit
 	}
 
+	/* Metodi palauttaa listan kaikista toimitsijarooli-ilmentymistä */
 	public static function all(){
 		$query = DB::connection()->prepare('SELECT * FROM Toimitsijarooli');
 		$query->execute();
@@ -22,3 +26,4 @@ public $kilpailu, $kirjaaja;
 
 		return $toimitsijat;
 	}
+}

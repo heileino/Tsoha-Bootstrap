@@ -67,6 +67,7 @@ class Ajanmittauspiste extends BaseModel{
 		return null;
 	}
 
+	/* Metodi tallentaa attribuuttien tietosisällön tietokantaan */
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Ajanmittauspiste (etaisyys, kilpailu, kirjaaja) VALUES (:etaisyys, :kilpailu, :kirjaaja) RETURNING id');
 		$query->execute(array('etaisyys' => $this->etaisyys, 'kilpailu' => $this->kilpailu, 'kirjaaja' => $this->kirjaaja));
@@ -76,12 +77,10 @@ class Ajanmittauspiste extends BaseModel{
 
 
 	public function update(){
-		return null;
-
+		
 	}
 
 	public function destroy(){
-		return null;
 
 	}
 

@@ -49,7 +49,8 @@ class Kilpailija extends BaseModel{
 
 		return null;
 	}
-
+	
+	/* Metodi tallentaa attribuuttien tietosisällön tietokantaan */
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES (:nimi, :seura, :kansallisuus, :syntymavuosi) RETURNING id');
 		$query->execute(array('nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymavuosi));

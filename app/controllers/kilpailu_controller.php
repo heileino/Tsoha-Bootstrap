@@ -41,7 +41,7 @@ class KilpailuController extends BaseController{
 		if(count($errors) > 0){
 			View::make('kilpailu/kilpailu_uusi.html', array('errors' => $errors, 'kilpailu' => $kilpailu));
 		} else{
-			$kilpailu->save_by_user($user_logged_in->id);
+			$kilpailu->save();
 			Redirect::to('/omakilpailulista', array('message' => 'Kilpailu on lisätty tietokantaan!'));
 		}
 		
