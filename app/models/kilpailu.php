@@ -1,5 +1,6 @@
 <?php
 
+/* Luokka määrittää kilpailun ominaisuudet ja palvelut */
 class Kilpailu extends BaseModel{
 	
 	public $id, $kayttaja_id, $nimi, $paivamaara, $alkamisaika, $jarjestaja;

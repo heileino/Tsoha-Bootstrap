@@ -1,5 +1,5 @@
 <?php
-/* Luokka toimii kontrollerina ajanmittauspisteen tuloksen mallin ja näkymän välillä */
+/* Luokka toimii kontrollerina tuloksen mallin ja näkymän välillä */
 class TulosController extends BaseController{
 	/* Metodi */
 	public static function show($kilpailu_id){
@@ -19,9 +19,9 @@ class TulosController extends BaseController{
 		$ajanmittauspisteet = Ajanmittauspiste::all_from_kilpailu($kilpailu_id);
 
 		View::make('tulos/tulos_etusivu.html', array('mittauspiste'=> $ajanmittauspiste, 'tuloksia' => $tuloksia, 'kilpailu' => $kilpailu, 'ajanmittauspisteet' => $ajanmittauspisteet));
-	} else{
+		} else{
 		Redirect::to('/kilpailu/' .$kilpailu_id. '/tulokset');
-	}
+		}
 		
 	}
 

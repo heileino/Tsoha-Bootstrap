@@ -1,4 +1,5 @@
 <?php
+
 /* Luokka toimii kontrollerina kilpailun osallistujan mallin ja näkymän välillä */
 class OsallistujaController extends BaseController{
 	public static function show($kilpailu_id){
@@ -7,7 +8,7 @@ class OsallistujaController extends BaseController{
 		View::make('osallistuja/osallistuja_lista.html', array('osallistujat' => $osallistujat, 'kilpailu' => $kilpailu));
 	}
 
-// Metodi palauttaa kutsujalle parametrina saatua kilpailun tunnusta vastaavan kilpailun tiedot sekä taulukot kaikista osallistujista ja kilpailijoista
+	// Metodi palauttaa kutsujalle parametrina saatua kilpailun tunnusta vastaavan kilpailun tiedot sekä taulukot kaikista osallistujista ja kilpailijoista
 	public static function editlist($kilpailu_id){
 		$osallistujat = Osallistuja::all_return_names($kilpailu_id);
 		$osallistuvat_kilpailijat = Osallistuja::all_kilpailija_id($kilpailu_id);
@@ -36,6 +37,7 @@ class OsallistujaController extends BaseController{
 		
 			$osallistuja->save();
 		}
+		
 		Redirect::to('/kilpailu/' . $kilpailu_id . '/osallistujat', array('message' => 'Osallistuja lisätty onnistuneesti!')); 
 	}
 }

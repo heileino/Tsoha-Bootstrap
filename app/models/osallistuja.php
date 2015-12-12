@@ -1,13 +1,15 @@
 <?php
 
+/* Luokka määrittää kilpailun osallistujan ominaisuudet ja palvelut */
 class Osallistuja extends BaseModel{
 	public $kilpailu, $kilpailija;
 
+	/* Osallistuja-luokan konstruktori */
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		//$this->validators = array();
+		// $this->validators = array();
 	}
-
+	/* Metodi palauttaa kaikki parametrina saadun kilpailutunnuksen määrittämän kilpailun osallistujat */
 	public static function all($kilpailu_id){
 		$query = DB::connection()->prepare('SELECT * FROM Osallistuja WHERE Osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));
@@ -24,7 +26,7 @@ class Osallistuja extends BaseModel{
 
 		return $osallistujat;
 	}
-
+	/* */
 	public static function all_return_names($kilpailu_id){
 		$query = DB::connection()->prepare('SELECT Kilpailija.id as kilpailija_id, Kilpailija.nimi as kilpailija_nimi, Kilpailija.seura as kilpailija_seura, Kilpailija.kansallisuus as kilpailija_kansallisuus FROM Osallistuja INNER JOIN Kilpailija ON Osallistuja.kilpailija = Kilpailija.id WHERE osallistuja.kilpailu = :kilpailu');
 		$query->execute(array('kilpailu' => $kilpailu_id));

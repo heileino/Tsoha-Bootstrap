@@ -1,5 +1,6 @@
 <?php
 
+/* Luokka määrittää järjestelmään rekisteröidyn käyttäjän ominaisuudet ja palvelut*/
 class Kayttaja extends BaseModel{
 
 	public $id, $nimi, $tunnus, $salasana;

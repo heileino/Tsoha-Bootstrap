@@ -1,5 +1,6 @@
 <?php
 
+/* Luokka määrittää kilpailijan ominaisuudet ja palvelut*/
 class Kilpailija extends BaseModel{
 
 	public $id, $nimi, $seura, $kansallisuus, $syntymavuosi;

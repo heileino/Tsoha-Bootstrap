@@ -1,4 +1,5 @@
 <?php
+
 /* Luokka toimii kontrollerina kirjaajan mallin ja näkymän välillä */
 class KirjaajaController extends BaseController{
 	

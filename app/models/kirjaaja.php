@@ -1,12 +1,14 @@
 <?php
 
+/* Luokka määrittää ajanmittauspisteen ominaisuudet ja palvelut */
 class Kirjaaja extends BaseModel{
 
 	public $id, $nimi, $tunnus, $salasana;
 
+	/* Kirjaaja-luokan Konstruktori */
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		// tähän mahdolliset validaattorit
+		// mahdolliset validaattorit tähän
 	}
 
 	public static function all(){

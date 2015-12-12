@@ -1,5 +1,5 @@
 <?php
-
+/* Luokka määrittää ajanmittauspisteen ominaisuudet ja palvelut */
 class Ajanmittauspiste extends BaseModel{
 	
 	public $id, $etaisyys, $kilpailu, $kirjaaja;
