@@ -7,8 +7,9 @@
 	<div class="form-group">
   		<label>Valitse ajanmittauspiste</label>
   		<select class="form-control" name="ajanmittauspiste">
+  			<option selected disabled>Valitse ajanmittauspiste</option>
     	{% for ajanmittauspiste in ajanmittauspisteet %}
-      		<option value="{{ajanmittauspiste.id}}">Ajanmittauspiste {{ajanmittauspiste.etaisyys}} km</option>
+     		<option value="{{ajanmittauspiste.id}}">Ajanmittauspiste {{ajanmittauspiste.etaisyys}} km</option>
     	{% endfor %}
   	</select>
 	</div>
@@ -16,9 +17,7 @@
       		<button type="submit" class="btn btn-primary">Hae tiedot</button>
     </div>
 </form>
- <form method="post" action="{{base_path}}/kilpailu/{{kilpailu.id}}/tulokset/{{mittauspiste.id}}" style="display: inline-block;">
-    <button type="submit" class="btn btn-success">Lisää tulos</button>
- </form>
+ 
 <h2>Tilanne {{mittauspiste.etaisyys}} km kohdalla</h2>
 <div>
 	<table class="table table-striped table-bordered">

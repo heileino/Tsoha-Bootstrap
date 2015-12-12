@@ -26,7 +26,7 @@ CREATE TABLE Kirjaaja(
 	id SERIAL PRIMARY KEY,
 	nimi varchar(60) NOT NULL,
 	tunnus varchar(60) NOT NULL,
-	salasana varchar(60) NOT NULL
+	salasana varchar(60)
 );
 
 CREATE TABLE Toimitsijarooli(

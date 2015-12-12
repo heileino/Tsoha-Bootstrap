@@ -6,7 +6,7 @@ class KilpailuController extends BaseController{
 		$kilpailut = Kilpailu::all();
 		View::make('kilpailu/index.html', array('kilpailut' => $kilpailut));
 	}
-        /* Metodi kerää kaikki kirjautuneen käyttäjän kilpailut ja tarjoaa ne käyttäjän omien kilpailujen listauksesta vastaavalle näkymälle */
+    /* Metodi kerää kaikki kirjautuneen käyttäjän kilpailut ja tarjoaa ne käyttäjän omien kilpailujen listauksesta vastaavalle näkymälle */
 	public static function ownlist(){
 		self::check_logged_in();
 		$user_logged_in = self::get_user_logged_in();
@@ -18,12 +18,12 @@ class KilpailuController extends BaseController{
 		$kilpailu = Kilpailu::find($id);
 		View::make('kilpailu/kilpailu_esittely.html', array('kilpailu' => $kilpailu));
 	}
-
+	/* Metodi tarkistaa käyttäjän kirjautumisen ja ohjaa uuden kilpailun luomisesta vastaavaan näkymään */
 	public static function create(){
 		self::check_logged_in();
 		View::make('kilpailu/kilpailu_uusi.html');
 	}
-
+	/* Metodi */
 	public static function store(){
 		self::check_logged_in();
 		$params = $_POST;
@@ -44,7 +44,6 @@ class KilpailuController extends BaseController{
 			$kilpailu->save_by_user($user_logged_in->id);
 			Redirect::to('/omakilpailulista', array('message' => 'Kilpailu on lisätty tietokantaan!'));
 		}
-
 		
 	}
 
@@ -53,7 +52,8 @@ class KilpailuController extends BaseController{
 		$kilpailu = Kilpailu::find($id);
 		View::make('kilpailu/kilpailu_muokkaus.html', array('kilpailu' => $kilpailu));
 	}
-
+	/* Metodi saa kilpailutietojen päivitysnäkymän lomaketiedot, jotka se tarkistuttaa ja päivityttää tiedot mallin avulla tietokantaan 
+	tai palauttaa virheilmoituksineen takaisin päivitysnäkymään */
 	public static function update($id){
 		self::check_logged_in();
 		$params = $_POST;
@@ -81,9 +81,9 @@ class KilpailuController extends BaseController{
 
 	
 
-
+	/* Metodi vastaanottaa tunnuksen kilpailusta joka halutaan poistaa, hakee kyseisen kilpailun ilmentymän ja pyytää kilpailun mallia poistamaan kyseinen kilpailu tietokannasta */
 	public static function destroy($id){
-		$kilpailu = new Kilpailu(array('id' => $id));
+		$kilpailu = Kilpailu::find($id);//new Kilpailu(array('id' => $id));
 		$kilpailu->destroy();
 		Redirect::to('/omakilpailulista', array('message' => 'Kilpailun ' . $kilpailu->nimi . ' poisto onnistui!')); 
 	}

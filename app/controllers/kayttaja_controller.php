@@ -1,5 +1,5 @@
 <?php
-/* Luokka toi */
+/* Luokka toimii kontrollerina käyttäjän mallin ja näkymän välillä */
 class KayttajaController extends BaseController{
 	
 	/* Metodi ohjaa kirjautumisnäkymään */
@@ -7,8 +7,8 @@ class KayttajaController extends BaseController{
 		View::make('kayttaja/login.html');
 	}
 
-	/* Metodi luo uuden Kayttaja-olion kirjautumisesta vastaavan näkymän lomaketietojen avulla
-	ja ohjaa onnistuneen kirjautumisen jälkeen käyttäjän omien kilpailujensa listaukseen */
+	/* Metodi vastaanottaa kayttajan kirjautumisnäkymästä kirjautumistiedot, tarkistaa kirjautumisen onnistumisen ja joko ilmoittaa näkymälle kirjautumisen epäonnistumisesta 
+	tai luo uuden käyttäjäsession näkymän käytettäväksi */
 	public static function handle_login(){
 		$params = $_POST;
 		$kayttaja = Kayttaja::authenticate($params['tunnus'], $params['salasana']);

@@ -1,5 +1,5 @@
 <?php
-/* Luokka toimii kontrollina kilpailun ajanmittauspisteen mallin ja näkymän välillä */
+/* Luokka toimii kontrollerina kilpailun ajanmittauspisteen mallin ja näkymän välillä */
 class AjanmittauspisteController extends BaseController{
 	
 	/* Metodi hakee kaikki parametrina saadun kilpailun kaikki ajanmittauspisteet kilpailun tietoja käsittelevältä mallilta 
@@ -24,8 +24,7 @@ class AjanmittauspisteController extends BaseController{
 		View::make('ajanmittauspiste/ajanmittauspiste_uusi.html', array('kilpailu' => $kilpailu, 'kirjaajat' => $kirjaajat));
 	}
 
-	/* Metodi luo uuden ajanmittaupiste-ilmentymän attribuuteilla, jotka se saa parametrina ja uuden ajanmittauspisteen luomisesta vastaavan näkymän lomakkeesta. 
-	Uuden ajanmittaupiste-ilmentymän avulla sen attribuuttien tiedot tallennetaan ajanmittauspisteen tietoja käsittelevän mallin avulla tietokantaan. */
+	/* Metodi vastaanottaa näkymältä kilpailun tiedot ja tallentaa ne kilpailumallin avulla tietokantaan */
 	public static function store($kilpailu_id){
 		self::check_logged_in();
 		$params = $_POST;

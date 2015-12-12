@@ -10,12 +10,11 @@
 	<h1>{{kilpailu.nimi}}</h1>
 	
 	{% if user_logged_in %}
-	<p>
 		{{forms.edit_button("#{base_path}/kilpailu/#{kilpailu.id}/muokkaa")}}
 		{{forms.destroy_button("#{base_path}/kilpailu/#{kilpailu.id}/poista")}}
 		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/uusiajanmittauspiste" class="btn btn-success">Lisää uusi ajanmittauspiste</a>
-	</p>
 	{% endif %}
+ 	<a class="btn btn-default btn-sm" href="{{base_path}}/kirjaajalogin">Lisää uusi tulos</a>
 	
 	<ul>
 		<li><strong>Järjestäjä:</strong> {{kilpailu.jarjestaja}}</li>

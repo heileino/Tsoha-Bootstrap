@@ -84,6 +84,12 @@
     KayttajaController::logout();
   });
 
+  // kirjaaja
+
+  $routes->get('/kirjaajalogin', function(){
+    KirjaajaController::login();
+  });
+
 
   // ajanmittauspiste
 
@@ -133,12 +139,10 @@
     TulosController::show($id);
   });
 
-  $routes->post('/kilpailu/:kilpailu_id/tulokset/:ajanmittauspiste_id', function($kilpailu_id){
+  $routes->post('/kilpailu/:kilpailu_id/tulokset', function($kilpailu_id){
     TulosController::show_ajanottopiste_data($kilpailu_id);
   });
 
-
-  
 
   // kilpailun suunnittelunäkymiä
   

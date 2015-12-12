@@ -6,7 +6,7 @@ class Kirjaaja extends BaseModel{
 
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		// tähän validaattorit
+		// tähän mahdolliset validaattorit
 	}
 
 	public static function all(){
@@ -26,6 +26,47 @@ class Kirjaaja extends BaseModel{
 
 		return $kirjaajat;
 	}
+
+
+	public static function authenticate($tunnus, $salasana){
+		$query = DB::connection()->prepare('SELECT * FROM Kirjaaja WHERE tunnus = :tunnus AND salasana = :salasana LIMIT 1');
+		$query->execute(array('tunnus' => $tunnus, 'salasana' => $salasana));
+		$row = $query->fetch();
+
+
+		if($row){
+			$kirjaaja = new Kayttaja(array(
+				'id' => $row['id'],
+				'nimi' => $row['nimi'],
+				'tunnus' => $row['tunnus'],
+				'salasana' => $row['salasana']
+			));
+
+			return $kirjaaja;
+		} 
+			
+		return null;
+		
+	}
+
+	public static function find($id){
+		$query = DB::connection()->prepare('SELECT * FROM Kirjaaja WHERE id = :id LIMIT 1');
+		$query->execute(array('id' => $id));
+		$row = $query->fetch();
+
+		if($row){
+			$kirjaaja = new Kirjaaja(array(
+				'id' => $row['id'],
+				'nimi' => $row['nimi'],
+				'tunnus' => $row['tunnus'],
+				'salasana' => $row['salasana']
+			));
+
+			return $kirjaaja;
+		}
+
+		return null;
+	}	
 
 	
 }

@@ -1,5 +1,5 @@
 <?php
-
+/* Luokka toimii kontrollerina kilpailun osallistujan mallin ja näkymän välillä */
 class OsallistujaController extends BaseController{
 	public static function show($kilpailu_id){
 		$osallistujat = Osallistuja::all_return_names($kilpailu_id);
