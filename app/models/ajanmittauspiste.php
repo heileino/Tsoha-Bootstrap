@@ -100,11 +100,11 @@ class Ajanmittauspiste extends BaseModel{
 
 
 	public function update(){
-		
+		/* Ei vielä valmis */
 	}
 
 	public function destroy(){
-
+		/* Ei vielä valmis*/
 	}
 
 	/* Validaattori testaa etäisyydeksi annetun syötteen oikeellisuuden */

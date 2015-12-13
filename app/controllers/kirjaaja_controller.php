@@ -28,7 +28,7 @@ class KirjaajaController extends BaseController{
 		$_SESSION['kirjaaja'] = null;
 		Redirect::to('/', array('message' => 'Uloskirjautuminen onnistui!'));
 	}
-
+	/* Metodi välittää kirjaajan omalle sivulle tiedot kirjaajalle kuuluvista ajanmittauspisteistä */
 	public static function show(){
 		$kirjaaja = self::get_kirjaaja_logged_in();
 		$ajanmittauspisteet = Ajanmittauspiste::all_from_kirjaaja($kirjaaja->id);

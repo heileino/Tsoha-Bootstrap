@@ -23,7 +23,7 @@ class KilpailuController extends BaseController{
 		self::check_logged_in();
 		View::make('kilpailu/kilpailu_uusi.html');
 	}
-	/* Metodi */
+	/* Metodi tallentaa kilpailun tallennuksesta vastaavalta näkymältä saadut uuden kilpailun tiedot tietokantaan kilpailunmallin kautta */
 	public static function store(){
 		self::check_logged_in();
 		$params = $_POST;

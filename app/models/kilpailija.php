@@ -4,12 +4,13 @@
 class Kilpailija extends BaseModel{
 
 	public $id, $nimi, $seura, $kansallisuus, $syntymavuosi;
-
+	/* Luokan konstruktori */
 	public function __construct($attributes){
 		parent::__construct($attributes);
 		$this->validators = array('validate_nimi', 'validate_seura', 'validate_kansallisuus', 'validate_syntymavuosi');
 	}
 
+	/* Metodi palauttaa listan kaikista tietokannan kilpailuista */
 	public static function all(){
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailija');
 		$query->execute();
@@ -29,7 +30,7 @@ class Kilpailija extends BaseModel{
 		return $kilpailijat;
 	}
 
-
+	/* Metodi palauttaa parametrina saatua kilpailijatunnusta vastaavan kilpailijan tiedot tietokannansta */
 	public static function find($id){
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailija WHERE id = :id LIMIT 1');
 		$query->execute(array('id' => $id));
@@ -50,7 +51,7 @@ class Kilpailija extends BaseModel{
 		return null;
 	}
 	
-	/* Metodi tallentaa attribuuttien tietosisällön tietokantaan */
+	/* Metodi tallentaa attribuuttien arvot tietokantaan */
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Kilpailija (nimi, seura, kansallisuus, syntymavuosi) VALUES (:nimi, :seura, :kansallisuus, :syntymavuosi) RETURNING id');
 		$query->execute(array('nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymavuosi));
@@ -58,7 +59,7 @@ class Kilpailija extends BaseModel{
 		$this->id = $row['id'];
 	}
 
-	
+	/* Metodi päivittää attribuuttien arvot tietokantaan */
 	public function update(){
 		$query = DB::connection()->prepare('UPDATE Kilpailija SET nimi = :nimi, seura = :seura, kansallisuus = :kansallisuus, syntymavuosi = :syntymavuosi WHERE id = :id');
 		$query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'seura' => $this->seura, 'kansallisuus' => $this->kansallisuus, 'syntymavuosi' => $this->syntymavuosi));
@@ -66,7 +67,7 @@ class Kilpailija extends BaseModel{
 
 		
 	}
-
+	/* Metodi poistaa attribuutien tietoja vastaavan rivin tietokannasta */
 	public function destroy(){
 		$query = DB::connection()->prepare('DELETE FROM Kilpailija WHERE id = :id');
 		$query->execute(array('id' => $this->id));

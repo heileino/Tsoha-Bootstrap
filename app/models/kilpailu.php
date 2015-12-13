@@ -84,30 +84,31 @@ class Kilpailu extends BaseModel{
 		$this->id = $row['id'];
 	}
 
+	/* Metodi päivittää attribuuttien arvot tietokantaan */
 	public function update(){
 		$query = DB::connection()->prepare('UPDATE Kilpailu SET nimi = :nimi, jarjestaja = :jarjestaja, paivamaara = :paivamaara, alkamisaika = :alkamisaika WHERE id = :id');
 		$query->execute(array('id' => $this->id, 'nimi' => $this->nimi, 'jarjestaja' => $this->jarjestaja, 'paivamaara' => $this->paivamaara, 'alkamisaika' => $this->alkamisaika));
 		$row = $query->fetch();
 	}
-
+	/* Metodi poistaa attribuutien tietoja vastaavan rivin tietokannasta */
 	public function destroy(){
 		$query = DB::connection()->prepare('DELETE FROM Kilpailu WHERE id = :id');
 		$query->execute(array('id' => $this->id));
 		$query->fetch();
 	}
-
+	/* Validaattori tarkastuttaa syötetyn nimen kelpoisuuden */ 
 	public function validate_nimi(){
 		return self::validate_string_length('Nimen', $this->nimi, 3);
 	}
-
+	/* Validaattori tarkastuttaa syötetyn järjestäjän nimen kelpoisuuden */ 
 	public function validate_jarjestaja(){
 		return self::validate_string_length('Järjestäjän nimen', $this->jarjestaja, 2);
 	}
-
+	/* Validaattori tarkastuttaa syötetyn päivämäärän kelpoisuuden */ 
 	public function validate_paivamaara(){
 		return self::validate_date_format($this->paivamaara);
 	}
-
+	/* Validaattori tarkastuttaa syötetyn alkamisajan kelpoisuuden */ 
 	public function validate_alkamisaika(){
 		return self::validate_time_format($this->alkamisaika);
 	}

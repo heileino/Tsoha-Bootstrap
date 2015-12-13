@@ -72,24 +72,23 @@ class Tulos extends BaseModel{
 		}
 
 		return null;
-
 	}
 
-	/* Metodi tallentaa attribuuttien tietosisällön tietokantaan */
+	/* Metodi tallentaa attribuuttien arvot tietokantaan */
 	public function save(){
 		$query = DB::connection()->prepare('INSERT INTO Tulos (kilpailija, kilpailu, ajanmittauspiste, aika) VALUES (:etaisyys, :kilpailu, :ajanmittauspiste, :aika) RETURNING id');
 		$query->execute(array('kilpailija' => $this->kilpailija, 'kilpailu' => $this->kilpailu, 'ajanmittauspiste' => $this->ajanmittauspiste));
 		$row = $query->fetch();
 	}
 
-	/* Metodi */
+	/* Metodi päivittää attribuuttien arvot tietokantaan */
 	public function update(){
 		$query = DB::connection()->prepare('UPDATE Tulos SET kilpailija = :kilpailija, kilpailu = :kilpailu, ajanmittauspiste = :ajanmittauspiste, aika = :aika WHERE kilpailu = :kilpailu AND kilpailija = :kilpailija AND ajanmittauspiste = :ajanmittauspiste');
 		$query->execute(array('kilpailija' => $this->kilpailija, 'kilpailu' => $this->kilpailu, 'ajanmittauspiste' => $this->ajanmittauspiste, 'aika' => $this->aika));
 		$row = $query->fetch();
 	}
 
-	/* Metodi */
+	/* Metodi poistaa attribuutien tietoja vastaavan rivin tietokannasta */
 	public function destroy(){
 		$query = DB::connection()->prepare('DELETE FROM Tulos WHERE kilpailija = :kilpailija AND kilpailu = :kilpailu AND ajanmittauspiste = :ajanmittauspiste');
 		$query->execute(array('id' => $this->id));
