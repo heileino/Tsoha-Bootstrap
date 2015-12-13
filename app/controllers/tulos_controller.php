@@ -21,20 +21,20 @@ class TulosController extends BaseController{
 		View::make('tulos/tulos_etusivu.html', array('mittauspiste'=> $ajanmittauspiste, 'tuloksia' => $tuloksia, 'kilpailu' => $kilpailu, 'ajanmittauspisteet' => $ajanmittauspisteet));
 		} else{
 		Redirect::to('/kilpailu/' .$kilpailu_id. '/tulokset');
-		}
-		
+			}		
 	}
 
 	/* Metodi hakee kilpailun ja kilpailijan tietoja mallilta ja tarjoaa niitä uuden tuloksen kirjaamisesta vastaavalle näkymälle */
-	public static function create($kilpailu_id, $ajanmittauspiste_id){
-		self::check_logged_in(); // TARKASTETTAVA KIRJAAJAN KIRJAUTUMINEN!
+	public static function create($kilpailu_id){
+		self::check_kirjaaja_logged_in();
 		$kilpailu = Kilpailu::find($kilpailu_id);
 		$kilpailijat = Kilpailija::all();
 		View::make('tulos/tulos_uusi.html', array('kilpailu' => $kilpailu, 'kilpailijat' => $kilpailijat));
 	}
+	
 	/* Metodi vastaanottaa näkymältä uuden tuloskirjauksen tiedot ja tallentaa ne tulosmallin avulla tietokantaan */
 	public static function store($kilpailu_id, $ajanmittauspiste_id){
-		self::check_logged_in(); // TARKASTETTAVA KIRJAAJAN KIRJAUTUMINEN!
+		self::check_kirjaaja_logged_in();
 		$params = $_POST;
 		$tulos = new Tulos(array(
 			'kilpailija' => $params['kilpailija'],

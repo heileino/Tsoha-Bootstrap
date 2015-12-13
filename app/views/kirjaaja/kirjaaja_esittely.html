@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+	{% for ajanmittauspiste in ajanmittauspisteet %}
+		<a href="{{base_path}}/kilpailu/{{ajanmittauspiste.kilpailu_id}}/tulokset/uusi">{{ajanmittauspiste.kilpailu_nimi}}: Ajanmittauspiste {{ajanmittauspiste.etaisyys}}km</a>
+	{% endfor %}
+{% endblock %}

@@ -90,6 +90,14 @@
     KirjaajaController::login();
   });
 
+  $routes->post('/kirjaajalogin', function(){
+    KirjaajaController::handle_login();
+  });
+
+  $routes->get('/omakirjaaja', function(){
+    KirjaajaController::show();
+  });
+
 
   // ajanmittauspiste
 
@@ -127,11 +135,11 @@
 
   // tulos
 
-  $routes->post('/kilpailu/:kilpailu_id/tulokset/:ajanmittauspiste_id', function($kilpailu_id, $ajanmittauspiste_id){
+  $routes->post('/kilpailu/:kilpailu_id/tulokset/uusi', function($kilpailu_id, $ajanmittauspiste_id){
     TulosController::store($kilpailu_id, $ajanmittauspiste_id);
   });
 
-  $routes->get('/kilpailu/:kilpailu_id/tulokset/:ajanmittauspiste_id', function($kilpailu_id){
+  $routes->get('/kilpailu/:kilpailu_id/tulokset/uusi', function($kilpailu_id){
     TulosController::create($kilpailu_id);
   });
 

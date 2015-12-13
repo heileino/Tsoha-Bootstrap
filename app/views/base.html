@@ -48,6 +48,9 @@
             {% if user_logged_in %}
               <li><a href="{{base_path}}/omakilpailulista">Omat kilpailut</a></li>
             {% endif %}
+            {% if kirjaaja_logged_in %}
+              <li><a href="{{base_path}}/omakirjaaja">Omat kirjaajatiedot</a></li>
+            {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <!--<li><a href="#">Rekisteröidy</a></li> -->

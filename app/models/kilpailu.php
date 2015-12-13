@@ -54,7 +54,7 @@ class Kilpailu extends BaseModel{
 
 	}
 
-	
+	/* Metodi  */
 	public static function find($id){
 		$query = DB::connection()->prepare('SELECT * FROM Kilpailu WHERE id = :id LIMIT 1');
 		$query->execute(array('id' => $id));

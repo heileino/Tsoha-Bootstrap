@@ -3,12 +3,13 @@
 class Ajanmittauspiste extends BaseModel{
 	
 	public $id, $etaisyys, $kilpailu, $kirjaaja;
-
+	/* Luokan konstruktori */
 	public function __construct($attributes){
 		parent::__construct($attributes);
 		$this->validators = array('validate_etaisyys');
 	}
 
+	/* Metodi palauttaa listan kaikista tietokannan ajanottopisteistä */
 	public static function all(){
 		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste');
 		$query->execute();
@@ -28,6 +29,7 @@ class Ajanmittauspiste extends BaseModel{
 		return $ajanmittauspisteet;
 	}
 
+	/* Metodi palauttaa listan kaikista tietokannan ajanottopisteistä, jotka kuuluvat parametrina saatua kilpailutunnusta vastaavaan kilpailuun */
 	public static function all_from_kilpailu($kilpailu_id){
 		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste WHERE kilpailu = :kilpailu ORDER BY etaisyys ASC');
 		$query->execute(array('kilpailu' => $kilpailu_id));
@@ -48,6 +50,27 @@ class Ajanmittauspiste extends BaseModel{
 
 	}
 
+	/* Metodi palauttaa listan kaikista tietokannan ajanottopisteistä, jotka kuuluvat parametrina saatua kilpailutunnusta vastaavaan kilpailuun */
+	public static function all_from_kirjaaja($kirjaaja_id){
+		$query = DB::connection()->prepare('SELECT DISTINCT Kilpailu.id as kilpailu_id, Kilpailu.nimi as kilpailu_nimi, Ajanmittauspiste.id as ajanmittauspiste_id, Ajanmittauspiste.etaisyys as etaisyys FROM Ajanmittauspiste, Kilpailu, Toimitsija WHERE Ajanmittauspiste.kirjaaja = :kirjaaja_id AND Toimitsija.kilpailu = Kilpailu.id');		
+		$query->execute(array('kirjaaja_id' => $kirjaaja_id));
+		$rows = $query->fetchAll();
+		$ajanmittauspisteet = array();
+
+		foreach($rows as $row){
+			$ajanmittauspisteet[] = array(
+				'kilpailu_id' => $row['kilpailu_id'],
+				'kilpailu_nimi' => $row['kilpailu_nimi'],
+				'ajanmittauspiste_id' => $row['ajanmittauspiste_id'],
+				'etaisyys' => $row['etaisyys']
+			);				
+		}
+
+		return $ajanmittauspisteet;
+
+
+	}
+	/* Metodi etsii ja palauttaa parametrina saamaansa kilpailutunnusta ja ajanmittauspistetunnusta vastaavan ajanmittauspisteen */
 	public static function find($kilpailu_id, $ajanmittauspiste_id){
 		$query = DB::connection()->prepare('SELECT * FROM Ajanmittauspiste WHERE id = :id  AND kilpailu = :kilpailu LIMIT 1');
 		$query->execute(array('id' => $ajanmittauspiste_id, 'kilpailu' => $kilpailu_id));
@@ -84,6 +107,7 @@ class Ajanmittauspiste extends BaseModel{
 
 	}
 
+	/* Validaattori testaa etäisyydeksi annetun syötteen oikeellisuuden */
 	public function validate_etaisyys(){
 		return self::validate_distance($this->etaisyys);
 	}

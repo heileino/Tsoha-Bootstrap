@@ -12,7 +12,7 @@ public $kilpailu, $kirjaaja;
 
 	/* Metodi palauttaa listan kaikista toimitsijarooli-ilmentymistä */
 	public static function all(){
-		$query = DB::connection()->prepare('SELECT * FROM Toimitsijarooli');
+		$query = DB::connection()->prepare('SELECT * FROM Toimitsija');
 		$query->execute();
 		$rows = $query->fetchAll();
 		$toimitsijat = array();
@@ -26,4 +26,5 @@ public $kilpailu, $kirjaaja;
 
 		return $toimitsijat;
 	}
+
 }
