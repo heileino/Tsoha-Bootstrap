@@ -1,25 +1,14 @@
 # Hiihtokisojen tulospalvelusovelluksen esittelysivu
 
+Järjestelmän tarkoitus on toimia hiihtokisojen tulospalvelujärjestelmänä. Kyseessä on keskeinen
+apuväline onnistuneiden hiihtokisojen järjestämiseen. Onnistunut tulospalvelu varmistaa osaltaan
+onnistuneen kisatapahtuman niin kisajärjestäjien, lajiorganisaation, urheilijoiden kuin katsojienkin
+näkökulmaa ajatellen.
+
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/)
 * [Linkki dokumentaatiooni](https://github.com/heileino/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
-
-
-Kilpailuaiheiset sivut:
-
-* [Linkki kilpailujen listaussivuun (etusivu)](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu)
-* [Linkki uuden kilpailun luomissivuun](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/uusi)
-* [Linkki esimerkkiin kilpailulistan muokkaussivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailulista/1)
-* [Linkki esimerkkiin kilpailun lopputulosten esittelysivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/1/tulokset)
-* [Linkki esimerkkiin kilpailun lähtölistasivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/lahtolista)
-* [Linkki esimerkkiin kilpailun muokkaussivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailu/1)
-
-Kilpailja-aiheiset sivut:
-
-* [Linkki esimerkkiin kilpailijoiden listaussivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailija)
-* [Linkki esimerkkiin kilpailijan esittelysivusta](http://heileino.users.cs.helsinki.fi/hiihtotulospalvelu/kilpailija/1)
-
 
 ## Työn aihe
 
