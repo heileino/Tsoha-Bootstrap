@@ -16,8 +16,6 @@
 				<th>Järjestäjä</th>			
 				<th>Kilpailun päivämäärä</th>				
 				<th>Alkamisaika</th>
-				<!-- <th>Status</th> -->
-				<!-- <th>Kilpailu lisätty</th> -->
 			</tr>
 		</thead>
 
@@ -28,8 +26,6 @@
 					<td>{{kilpailu.jarjestaja}}</td>
 					<td>{{kilpailu.paivamaara}}</td>
 					<td>{{kilpailu.alkamisaika}}</td>
-					<!-- <td><label class="label label-danger">päättynyt</td>	-->				
-					<!-- <td>1.10.2015</td> -->
 					<th><a class="btn btn-default btn-sm" href="{{base_path}}/kilpailu/{{kilpailu.id}}/muokkaa">Muokkaa</a></th>
 				</tr>
 			{% endfor %}

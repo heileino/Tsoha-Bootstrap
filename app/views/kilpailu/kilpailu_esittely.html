@@ -6,26 +6,21 @@
   		{{message}}
 	</div>
 	{% endif %}
-
 	<h1>{{kilpailu.nimi}}</h1>
-	
-	{% if user_logged_in %}
+	<!-- varmistetaan, että muokkaus- ja poistotoiminnot ja ajanmittaustoiminnot näytetään vain oikealle käyttäjälle -->
+	{% if user_logged_in.id == kilpailu.kayttaja %}
 		{{forms.edit_button("#{base_path}/kilpailu/#{kilpailu.id}/muokkaa")}}
 		{{forms.destroy_button("#{base_path}/kilpailu/#{kilpailu.id}/poista")}}
 		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/uusiajanmittauspiste" class="btn btn-success">Lisää uusi ajanmittauspiste</a>
 	{% endif %}
- 	<a class="btn btn-default btn-sm" href="{{base_path}}/kirjaajalogin">Lisää uusi tulos</a>
-	
+ 	<a class="btn btn-default btn-sm" href="{{base_path}}/kirjaajalogin">Lisää uusi tulos (ei vielä toiminnassa)</a>	
 	<ul>
 		<li><strong>Järjestäjä:</strong> {{kilpailu.jarjestaja}}</li>
 		<li><strong>Päivämäärä:</strong> {{kilpailu.paivamaara}}</li>
 		<li><strong>Alkamisaika:</strong> {{kilpailu.alkamisaika}}</li>		
 	</ul>
-
 	<p>
 		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/osallistujat">Osallistujalista</a>
 		<a href="{{base_path}}/kilpailu/{{kilpailu.id}}/tulokset">Tulokset</a>
 	</p>
-
-
 {% endblock %}

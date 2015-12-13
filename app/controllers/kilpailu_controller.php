@@ -9,8 +9,8 @@ class KilpailuController extends BaseController{
     /* Metodi kerää kaikki kirjautuneen käyttäjän kilpailut ja tarjoaa ne käyttäjän omien kilpailujen listauksesta vastaavalle näkymälle */
 	public static function ownlist(){
 		self::check_logged_in();
-		$user_logged_in = self::get_user_logged_in();
-		$kilpailut = Kilpailu::all_by_user($user_logged_in->id);
+		$kayttaja = self::get_user_logged_in();
+		$kilpailut = Kilpailu::all_by_user($kayttaja->id);
 		View::make('kilpailu/kilpailu_omalista.html', array('kilpailut' => $kilpailut));
 	}
 
@@ -27,10 +27,10 @@ class KilpailuController extends BaseController{
 	public static function store(){
 		self::check_logged_in();
 		$params = $_POST;
-		$user_logged_in = self::get_user_logged_in();
+		$kayttaja = self::get_user_logged_in();
 		$kilpailu = new Kilpailu(array(
 			'nimi' => $params['nimi'],
-			'kayttaja_id' => $user_logged_in,
+			'kayttaja' => $kayttaja->id,
 			'paivamaara' => $params['paivamaara'],	
 			'alkamisaika' => $params['alkamisaika'],
 			'jarjestaja' => $params['jarjestaja']
@@ -60,7 +60,7 @@ class KilpailuController extends BaseController{
 		$user = self::get_user_logged_in();
 		$attributes = array(
 			'id' => $id,
-			'kayttaja_id' => $user->id,
+			'kayttaja' => $user->id,
 			'nimi' => $params['nimi'],
 			'jarjestaja' => $params['jarjestaja'],
 			'paivamaara' => $params['paivamaara'],

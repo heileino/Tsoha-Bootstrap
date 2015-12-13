@@ -7,7 +7,7 @@ CREATE TABLE Kayttaja(
 
 CREATE TABLE Kilpailu(
 	id SERIAL PRIMARY KEY,
-	kayttaja_id INTEGER REFERENCES Kayttaja(id) ON DELETE CASCADE,
+	kayttaja INTEGER REFERENCES Kayttaja(id) ON DELETE CASCADE,
 	nimi varchar(100) NOT NULL,
 	paivamaara DATE,
 	alkamisaika TIME,
@@ -29,7 +29,7 @@ CREATE TABLE Kirjaaja(
 	salasana varchar(60)
 );
 
-CREATE TABLE Toimitsijarooli(
+CREATE TABLE Toimitsija(
 	kilpailu INTEGER REFERENCES Kilpailu(id) ON DELETE CASCADE,
 	kirjaaja INTEGER REFERENCES Kirjaaja(id) ON DELETE CASCADE,
 	PRIMARY KEY(kilpailu, kirjaaja)
